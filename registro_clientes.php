@@ -17,6 +17,17 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <style>
+        a{
+            color: white;
+        }
+        .fondo{
+         background-color: #FFFFFF;
+         border: 1px solid #0291DD;
+         font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+         font-size: 11px;
+        }
+    </style>
   </head>
   <body>
     <div class="container-scroller">
@@ -32,37 +43,43 @@
                 <h6 class="font-weight-light">al regristrarte podras obtener los costos de mayoreo
                     y realizar tus pedidos
                 </h6>
-                <form class="pt-3" action="" method="POST">
+                <form class="pt-3" action="admin/clientes/agregar.php" method="POST">
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="email" required>
+                    <input type="email"    name="email_cliente"  class="form-control form-control-lg fondo" placeholder="email" required>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="contraseña" required>
+                    <input type="password"  name="contrasena_cliente"  class="form-control form-control-lg fondo" placeholder="contraseña" >
+                    </div>
+                  <div class="form-group">
+                    <input type="password"  name="contrasena_cliente2"  class="form-control form-control-lg fondo" placeholder="Repirte la contraseña" required>
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Repirte la contraseña" required>
+                    <input type="number"  name="telefono"  class="form-control form-control-lg fondo" placeholder="Telefono" required>
                   </div>
                   <div class="form-group">
-                    <input type="number" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Telefono" required>
+                    <input type="text"   name="direccion"  class="form-control form-control-lg fondo" class="form-control form-control-lg fondo"  placeholder="Direccion" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Pais" required>
+                    <input type="text"  name="pais"  class="form-control form-control-lg fondo"  placeholder="Pais" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Estado" required>
+                    <input type="text"  name="estado"  class="form-control form-control-lg fondo"  placeholder="Estado" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Municipio" required>
+                    <input type="text"  name="municipio"  class="form-control form-control-lg fondo"  placeholder="Municipio" required>
                   </div>
                   <div class="form-group">
-                    <input type="hidden" name="id_admin" value="1">
+                    <input type="hidden"  name="rfc" value='0000000000' >
+                  </div>
+                  <div class="form-group">
+                    <input type="text"  name="razon_social"  class="form-control form-control-lg fondo"  placeholder="Nobre del Negocio" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" name="idusuarios_admin" value="<?php echo $_GET['id'];?>">
                   </div>
                 
                   <div class="mb-4">
-                    <!--div class="form-check">
-                      <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input"> I agree to all Terms & Conditions </label>
-                    </div-->
+                  
                   </div>
                   <div class="mt-3">
                     <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" >Registrar</button>

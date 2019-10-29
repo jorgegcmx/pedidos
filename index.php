@@ -17,6 +17,17 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <style>
+         a{
+            color: white;
+        }
+        .fondo{
+         background-color: #FFFFFF;
+         border: 1px solid #0291DD;
+         font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+         font-size: 11px;
+        }
+    </style>
   </head>
   <body>
     <div class="container-scroller">
@@ -32,10 +43,10 @@
                 <h6 class="font-weight-light"></h6>
                 <form class="pt-3">
                   <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Correo">
+                    <input type="email" class="form-control form-control-lg fondo" id="exampleInputEmail1" placeholder="Correo">
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Contraseña">
+                    <input type="password" class="form-control form-control-lg fondo" id="exampleInputPassword1" placeholder="Contraseña">
                   </div>
                   <div class="mt-3">
                     <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="admin/views">Ingresar</a>

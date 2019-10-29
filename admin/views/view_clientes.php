@@ -14,51 +14,40 @@
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>User</th>
-                          <th>Product</th>
-                          <th>Sale</th>
-                          <th>Status</th>
+                          <th>Correo</th>
+                          <th>Telefono</th>
+                          <th>Dirección</th>
+                          <th>Pais</th>
+                          <th>Estado</th>
+                          <th>Municipio</th>
+                          <th>Nombre del Negocio</th> 
+                          <th>status</th>                        
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody>                           
+                        <?php 
+                           include_once '../clientes/Classe.php';	
+                          $clientes = new Classe();                                         
+                          $cliente = $clientes->get_clientes($idusuario);                             
+                           while($fil = $cliente->fetchObject()){   
+                         ?>
                         <tr>
-                          <td>Jacob</td>
-                          <td>Photoshop</td>
-                          <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
-                          <td><label class="badge badge-danger">Pending</label></td>
+                          <td><?php echo $fil->email_cliente; ?></td>
+                          <td><?php echo $fil->telefono; ?></td>
+                          <td> <?php echo $fil->direccion; ?></td>
+                          <td><?php echo $fil->pais; ?></td>
+                          <td><?php echo $fil->estado; ?></td>
+                          <td><?php echo $fil->municipio; ?></td>
+                          <td><?php echo $fil->razon_social; ?></td>
+                          <td><label class="badge badge-success">Activo</label></td>
                         </tr>
-                        <tr>
-                          <td>Messsy</td>
-                          <td>Flash</td>
-                          <td class="text-danger"> 21.06% <i class="mdi mdi-arrow-down"></i></td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
-                        <tr>
-                          <td>John</td>
-                          <td>Premier</td>
-                          <td class="text-danger"> 35.00% <i class="mdi mdi-arrow-down"></i></td>
-                          <td><label class="badge badge-info">Fixed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Peter</td>
-                          <td>After effects</td>
-                          <td class="text-success"> 82.00% <i class="mdi mdi-arrow-up"></i></td>
-                          <td><label class="badge badge-success">Completed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Dave</td>
-                          <td>53275535</td>
-                          <td class="text-success"> 98.05% <i class="mdi mdi-arrow-up"></i></td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
-                    </div>
-                    <!-- main-panel ends -->
-                </div>
-                <!-- page-body-wrapper ends -->
-            </div>
+            </div>               
+          </div>                    
+      </div>
 <?php include_once 'footer.php';?>
