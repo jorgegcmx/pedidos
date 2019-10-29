@@ -31,9 +31,11 @@
                 <div class="brand-logo">
                   <img src="assets/images/logo.svg">
                 </div>
-                <h4>Productos Mayoreo</h4>
-                <h6 class="font-weight-light"></h6>
-                <form class="pt-3" action="login/login.php" method="POST">
+                <h4>Bienvenido</h4>
+                <h6 class="font-weight-light">
+                administra tus pedidos y el catalogo de tus productos
+                </h6>
+                <form class="pt-3" action="login_admin/login.php" method="POST">
                   <div class="form-group">
                     <input type="email" name="email" class="form-control form-control-lg fondo" required placeholder="Correo">
                   </div>

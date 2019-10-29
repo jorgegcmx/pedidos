@@ -19,7 +19,7 @@ $sql = $usu1->add_pedidos();
 
 include_once 'Classpedidos.php';
 $id = new Classpedidos();
-$dato = $id->get_pedido();
+$dato = $id->get_pedido($idcliente);
 
 while ($data = $dato->fetchObject()) {
 
@@ -42,9 +42,8 @@ foreach ($carrito as $p) {
 }
 
 unset($_SESSION['carrito']);
-$_SESSION = array();
-session_destroy();
+
 echo '<script type="text/javascript">
 			     alert("Guardado Correctamente");
-				 window.location.href="../view_clientes/";
+				 window.location.href="../view_clientes/view_pedidos.php";
 				 </script>';

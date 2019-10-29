@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['idusuarios'])){
+  header("Location:../../");
+}
+
+$idadmin=$_SESSION['idusuarios']; 
+$email=$_SESSION['email'];;	
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +36,16 @@
             background-color: #eee;
         }
     </style>
+<style>
+@media (min-width: 768px) {
+.carousel-multi-item-2 .col-md-3 {
+float: left;
+width: 25%;
+max-width: 100%; } }
+
+.carousel-multi-item-2 .card img {
+border-radius: 2px; }
+</style>
 
 </head>
 <?php
@@ -58,13 +78,7 @@ $idusuario=1;
                     </form>
                 </div>
                 <ul class="navbar-nav navbar-nav-right">
-                 
-              <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-              (Articulos en) <i class="mdi mdi-cart-outline"></i>
-                <span class="count-symbol bg-success"></span>
-              </a>             
-               </li>
+              
                  
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
@@ -75,7 +89,7 @@ $idusuario=1;
                                 <span class="availability-status online"></span>
                             </div>
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">Ceramica Checuan</p>
+                                <p class="mb-1 text-black"><?php echo $email;?></p>
                             </div>
                         </a>
                     </li>
@@ -110,7 +124,7 @@ $idusuario=1;
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="index.php">
-                       <span class="menu-title">Catalogo</span>
+                       <span class="menu-title">Tu Catalogo</span>
                           <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     </a>
                     </li>

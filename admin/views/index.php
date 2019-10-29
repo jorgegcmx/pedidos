@@ -36,22 +36,23 @@
                                                     </div>
                                                     <div class="product-img-outer">
                                                       <a href="#"   data-toggle="modal" data-target="#img<?php echo $fil->idarticulos; ?>" >
-                                                        <img width="300" height="400" class="product_image"
+                                                        <img width="300" height="400" class="img-fluid"
                                                             src="../articulos/<?php echo $fil->img; ?>"
                                                             alt="prduct image">
                                                       </a>
                                                     </div>
                                                     <p class="product-title"><b><?php echo $fil->nombrearticulo; ?></b>
                                                     </p>
-                                                    <p class="product-price"><b>
-                                                     Mayoreo $<?php echo $fil->precio_mayoreo; ?></b><br>                                                    
+                                                    <h6>
+                                                    <p class="product-price">
+                                                     Mayoreo $<?php echo $fil->precio_mayoreo; ?>                                                  
                                                     </p>
-                                                    <label>Cantidad</label>
-                                                    <input type="number" class="form-control fondo" size='5'>
-                                                    <br>
-                                                    <button type="button"
-                                                        class="btn btn-gradient-info btn-rounded btn-fw">+
-                                                        Agregar</button>
+                                                    </h6>                                                    
+                                                    <h6> <p class="product-price">
+                                                     Menudeo $<?php echo $fil->precio_menudeo; ?>                                                    
+                                                    </p></h6>
+                                                   
+                                                   
                                                     <p class="product-description">
                                                         <small><?php echo $fil->descripcion; ?></small></p>
                                                 </div>

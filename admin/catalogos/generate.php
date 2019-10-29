@@ -94,7 +94,7 @@ $idusuario="'.$id.'";
                                                 </div>
                                                 <div class="product-img-outer">
                                                   <a href="#"   data-toggle="modal" data-target="#img<?php echo $fil->idarticulos; ?>" >
-                                                    <img width="300" height="400" class="product_image"
+                                                    <img width="300" height="400" class="img-fluid"
                                                         src="../articulos/<?php echo $fil->img; ?>"
                                                         alt="prduct image">
                                                   </a>

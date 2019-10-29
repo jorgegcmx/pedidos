@@ -1,4 +1,8 @@
-<?php include_once 'header.php';?>
+<?php 
+include_once '../articulos/Product.php';
+$p = new Product();
+include_once 'header.php';
+?>
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
@@ -8,7 +12,7 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                    <div class="card">
                     <div class="card-body">
-                    <h4 class="card-title">Clientes Mayoristas</h4>
+                    <h4 class="card-title">Articulos en Carrito</h4>
                     <p class="card-description"><code></code>
                     </p>
                     <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
@@ -16,15 +20,14 @@
 if(isset($_SESSION["carrito"])){
 	$carrito=$_SESSION["carrito"];
 		 ?>
-		    <tr>
+		  <tr>
 			<th>Img</th>
 			<th>Nombre</th>
 			<th>Cantidad</th>
-            <th>UniCost</th>
+      <th>UniCost</th>
 			<th>Subtotal</th>
 			<th></th>
-			
-		    </tr>
+			</tr>
             <?php 
              $total=0;
              $i=0;

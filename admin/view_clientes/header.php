@@ -1,22 +1,24 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['idclientes'])){
+  header("Location:../../");
+}
+
+$idclientes=$_SESSION['idclientes']; 
+$idusuario=$_SESSION['idusuarios_admin'];;	
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
-    <!-- plugins:css -->
+    <title>Purple Admin</title>   
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css"> 
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <!-- End layout styles -->
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
     <style>
         a {
@@ -26,15 +28,7 @@
             background-color: #eee;
         }
     </style>
-
 </head>
-<?php
-include_once '../articulos/Product.php';
-$p = new Product();
-session_start();
-$idusuario=1;	
-?>
-
 <body>
     <div class="container-scroller">
         <!-- partial:../../partials/_navbar.html -->
@@ -60,25 +54,19 @@ $idusuario=1;
                         </div>
                     </form>
                 </div>
-                <ul class="navbar-nav navbar-nav-right">
-                 
+              <ul class="navbar-nav navbar-nav-right">                 
               <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="view_carrito.php" >
-                (Articulos en) <i class="mdi mdi-cart-outline"></i>
+                (Carrito) <i class="mdi mdi-cart-outline"></i>
                 <span class="count-symbol bg-success"></span>
               </a>             
                </li>
                  
                     <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
-                            aria-expanded="false">
-                            <div class="nav-profile-img">
-                                <img src="http://ceramicachecuan.com/wp-content/uploads/2017/03/cropped-cropped-logochecuan.jpg"
-                                    alt="image">
-                                <span class="availability-status online"></span>
-                            </div>
+                        <a class="nav-link dropdown-toggle"  href="#" 
+                            aria-expanded="false">                          
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">Ceramica Checuan</p>
+                                <p class="mb-1 text-black"><?php echo $_SESSION['email']; ?></p>
                             </div>
                         </a>
                     </li>

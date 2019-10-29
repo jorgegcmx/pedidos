@@ -93,14 +93,14 @@ class Classpedidos
     }
 
 /*********************************************************************CIERRE DESTALLE PEDIDOS********************************/
-    public function get_pedido()
+    public function get_pedido($idcliente)
     {
         try
         {
-            $sql = "SELECT max(idpedidos) as id FROM pedidos";
+            $sql = "SELECT max(idpedidos) as id FROM pedidos where idcliente =? ";
 
             $consulta = $this->con->prepare($sql);
-
+            $consulta->bindParam(1, $idcliente);
             $consulta->execute();
 
             if ($consulta->rowCount() > 0) {
@@ -113,22 +113,15 @@ class Classpedidos
         }
     }
 
-    public function get_cotizacion($id = null)
+    public function get_listapedidos($idcliente)
     {
         try
         {
-            $sql = "SELECT * FROM pedidos order by idpedidos DESC";
-
-            if ($id != null) {
-                $sql .= " WHERE idpedidos =?";
-
-            }
+            $sql = "SELECT * FROM pedidos WHERE idcliente =? order by idpedidos DESC";
 
             $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idcliente);
 
-            if ($id != null) {
-                $consulta->bindParam(1, $id);
-            }
             $consulta->execute();
             $this->con = null;
 
@@ -141,6 +134,58 @@ class Classpedidos
             print "Error:" . $e->getmessage();
         }
     }
+
+    
+
+    public function get_detalle_pedido($idpedido)
+    {
+        try
+        {
+            $sql = "SELECT * FROM detalle_pedidos inner join articulos on articulos.idarticulos=detalle_pedidos.idarticulo WHERE idpedido =? ";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idpedido);
+
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
+/**********************************FUNCION DONDE MUSTRA LOS PEDIDOS A USUARIO ADMINISTRADOR*************/
+    public function get_listapedidos_admin($idadmin)
+    {
+        try
+        {
+            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
+            
+            WHERE idusuarios_admin =? order by fecha DESC";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idadmin);
+
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
+
+
+
+
     public function get_print($id)
     {
         try
