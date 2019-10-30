@@ -59,10 +59,32 @@ $idusuario="'.$id.'";
         </nav>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-            <!-- partial:../../partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
-               
-            </nav>
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+                <li class="list-group-item active">
+                <span class="menu-title">Categorias</span>                                          
+               </li>
+               <li class="nav-item">
+               <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"]; ?>">
+                  <span class="menu-title">Todos los Artucilos
+               </span>                         
+               </a>
+               </li>
+               <?php 
+                include_once "../articulos/Classe.php";	
+                $categorias = new Classe();                                    
+                $categori = $categorias->get_categorias($idusuario);                                     
+                while($fil = $categori->fetchObject()){   
+                ?>
+               <li class="nav-item">
+               <a class="nav-link" href="<?php echo $_SERVER["PHP_SELF"]; ?>?id=<?php echo $fil->idcategorias; ?>">
+                  <span class="menu-title"><?php echo $fil->nombre; ?>
+               </span>                         
+               </a>
+               </li>
+                <?php } ?>                    
+           </ul>
+       </nav>
             <!-- partial -->
             <div class="main-panel">
             <div class="content-wrapper">
@@ -75,14 +97,16 @@ $idusuario="'.$id.'";
                             <div class="card-body">
                                 <div class="row product-item-wrapper">
                                     <?php 
-                                      include_once "../articulos/Classe.php";	
-                                      $articulos = new Classe();
-                                      if(isset($_POST["producto"])){
-                                       $articulo = $articulos->get_articulo_filtro($idusuario,$_POST["producto"]);
-                                      }else{
-                                        $articulo = $articulos->get_articulo($idusuario);
-                                      }
-                                       while($fil = $articulo->fetchObject()){   
+                                    include_once "../articulos/Classe.php";	
+                                    $articulos = new Classe();
+                                    if(isset($_POST["producto"])){
+                                     $articulo = $articulos->get_articulo_filtro($idusuario,$_POST["producto"]);
+                                    }elseif(isset($_GET["id"])){
+                                      $articulo = $articulos->get_categorias_filtro($idusuario,$_GET["id"]);
+                                    }else{
+                                      $articulo = $articulos->get_articulo($idusuario);
+                                    }
+                                     while($fil = $articulo->fetchObject()){   
                                      ?>
                                     <div class="col-lg-4 col-md-6 col-sm-6 col-12 product-item">
                                         <div class="card">

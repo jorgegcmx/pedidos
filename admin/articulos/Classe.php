@@ -87,6 +87,33 @@ class Classe
         }
     }
 
+    public function get_categorias_filtro($idusuarios,$idcategoria)
+    {
+        try
+        {
+            $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* 
+                    FROM articulos A join categorias C on A.idcategoria=C.idcategorias
+                    WHERE A.idusuarios = ? AND C.idcategorias = ?
+                    ";
+
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idusuarios);
+            $consulta->bindParam(2, $idcategoria);
+          
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
+
 
     public function add_articulo()
     {
@@ -142,6 +169,7 @@ class Classe
             print "Error: " . $e->getMessage();
         }
     }
+
     public function get_categorias($idusuarios)
     {
         try

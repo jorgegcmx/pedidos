@@ -9,7 +9,7 @@ $idadmin=$_SESSION['idusuarios'];
 $email=$_SESSION['email'];;	
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <!-- Required meta tags -->
@@ -66,17 +66,7 @@ $idusuario=1;
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
-                <div class="search-field d-none d-md-block">
-                    <form class="d-flex align-items-center h-100" action="." method="POST">
-                        <div class="input-group">
-                            <div class="input-group-prepend bg-transparent">
-                                <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                            </div>
-                            <input type="text" name="producto" class="form-control bg-transparent border-0" autofocus
-                                placeholder="Buscar Producto">
-                        </div>
-                    </form>
-                </div>
+               
                 <ul class="navbar-nav navbar-nav-right">
               
                  
@@ -113,14 +103,11 @@ $idusuario=1;
             <!-- partial:../../partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item sidebar-actions">
-                        <span class="nav-link">
-                            <div class="border-bottom">
-                                <h6 class="font-weight-normal mb-3"></h6>
-                            </div>
-                            <button class="btn btn-block btn-lg btn-gradient-primary mt-4" data-toggle="modal"
-                                data-target="#exampleModalCenter">+ Agregar Nuevo </button>
-                        </span>
+                   <li class="nav-item">
+                    <a class="nav-link" href="view_categorias.php">
+                       <span class="menu-title">Tus Categorias</span>
+                          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                    </a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="index.php">
@@ -140,6 +127,7 @@ $idusuario=1;
                           <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     </a>
                     </li>
+                    
                 </ul>
             </nav>
             <!-- partial -->

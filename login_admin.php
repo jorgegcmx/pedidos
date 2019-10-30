@@ -32,9 +32,21 @@
                   <img src="assets/images/logo.svg">
                 </div>
                 <h4>Bienvenido</h4>
-                <h6 class="font-weight-light">
+                <h6 class="font-weight-light">               
                 administra tus pedidos y el catalogo de tus productos
                 </h6>
+                <?php 
+                if(isset($_GET['ok'])){
+                  $ok=$_GET['ok'];
+                             
+
+                  if($ok==1){ ?>
+                <button type="button" class="btn btn-gradient-success btn-rounded btn-fw">Tu cuenta se creo correctamente</button><br>                
+                <?php }elseif($ok==2){ ?>
+                  <button type="button" class="btn btn-gradient-danger btn-rounded btn-fw">Ya existe una cuenta con el mismo email</button><br>
+                  <?php } 
+                   }   
+                  ?>
                 <form class="pt-3" action="login_admin/login.php" method="POST">
                   <div class="form-group">
                     <input type="email" name="email" class="form-control form-control-lg fondo" required placeholder="Correo">
@@ -48,6 +60,10 @@
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">                    
                     <a href="#" class="auth-link text-black">Olvidaste tu Contraseña?</a>
+                  </div>   
+                  <div class="my-2 d-flex justify-content-between align-items-center">
+                    <div class="form-check">                    
+                    <a href="registro_admin.php" class="auth-link text-black">Crear Cuenta</a>
                   </div>                 
                 </form>
               </div>

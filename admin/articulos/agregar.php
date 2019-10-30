@@ -54,9 +54,8 @@ if (isset($_POST['id'])) {
                     }
                 }
             }
-        }else{
+        } else {
 
-           
             $id = $_POST['id'];
             $codigo = $_POST['codigo'];
             $nombre = $_POST['nombre'];
@@ -91,27 +90,36 @@ if (isset($_POST['id'])) {
             $tamanio = $_FILES['img']['size'];
             $ruta = $_FILES['img']['tmp_name'];
 
-            $codigo = $_POST['codigo'];
-            $nombre = $_POST['nombre'];
-            $precio_mayoreo = $_POST['precio_mayoreo'];
-            $precio_menudeo = $_POST['precio_menudeo'];
-            $idcategoria = $_POST['idcategoria'];
-            $descripcion = $_POST['descripcion'];
-            $idusuarios = $_POST['idusuarios'];
+           /* $original = imagecreatefromjpeg($ruta);
+            $alto = imagesx($original);
+            $ancho = imagesy($original);
 
-            $destino = "imagenes/" . $idusuarios . 'chuan01' . $cadenaf = str_replace(' ', '', $nombre_img);
+            $copiar = imagecreatetruecolor(800, 600);
 
-            if ($nombre_img != "") {
-                if (copy($ruta, $destino)) {
+            imagecopyresampled($copiar, $original, 0, 0, 0, 0, 800, 600, $ancho, $alto);
+            imagejpeg($copiar,"imagenes/".$nombre_img,100);*/
 
-                    $usu1->set_articulo($id, $codigo, $nombre, $precio_mayoreo, $precio_menudeo, $idcategoria, $destino, $descripcion, $idusuarios);
-                    $sql = $usu1->add_articulo();
-                    header("Location:../views/");
+        $codigo = $_POST['codigo'];
+        $nombre = $_POST['nombre'];
+        $precio_mayoreo = $_POST['precio_mayoreo'];
+        $precio_menudeo = $_POST['precio_menudeo'];
+        $idcategoria = $_POST['idcategoria'];
+        $descripcion = $_POST['descripcion'];
+        $idusuarios = $_POST['idusuarios'];
 
-                } else {
+        $destino = "imagenes/" . $idusuarios . 'chuan01' . $cadenaf = str_replace(' ', '', $nombre_img);
 
-                }
-            }
+        if ($nombre_img != "") {
+        if (copy($ruta, $destino)) {
+
+        $usu1->set_articulo($id, $codigo, $nombre, $precio_mayoreo, $precio_menudeo, $idcategoria, $destino, $descripcion, $idusuarios);
+        $sql = $usu1->add_articulo();
+        header("Location:../views/");
+
+        } else {
+
+        }
+        }
         }
     }
 

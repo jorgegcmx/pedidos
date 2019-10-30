@@ -28,7 +28,7 @@
                         <?php 
                            include_once '../clientes/Classe.php';	
                           $clientes = new Classe();                                         
-                          $cliente = $clientes->get_clientes($idusuario);                             
+                          $cliente = $clientes->get_clientes($idadmin);                             
                            while($fil = $cliente->fetchObject()){   
                          ?>
                         <tr>
