@@ -19,8 +19,7 @@
                           <th>Fecha de Creación</th>                          
                           <th></th> 
                           <th>Importe Total</th> 
-                          <th>Status</th>
-                                                                        
+                          <th>Status</th>                                                                        
                         </tr>
                       </thead>
                       <tbody>                           

@@ -69,7 +69,7 @@ if(isset($_SESSION["carrito"])){
 					            <td colspan='4'>
 					 	          <form action='../pedidos/addpedidos.php' method='post'>					
 						          <div class='col-sm-10'>
-                      <input type='hidden' class='form-control'value='1' name='idcliente'>
+                      <input type='hidden' class='form-control'value='<?php echo $idclientes; ?>' name='idcliente'>
 						          </div>										
                       <div align='right'>
 						          <input type='submit' class='btn btn-success' value='Generar Pedido'>

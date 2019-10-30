@@ -184,7 +184,7 @@ class Classe
             if ($consulta->rowCount() > 0) {
                 return $consulta;
             } else {
-                return false;
+                return $consulta;
             }
         } catch (PDOExeption $e) {
             print "Error:" . $e->getmessage();

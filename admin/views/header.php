@@ -68,8 +68,13 @@ $idusuario=1;
                 </button>
                
                 <ul class="navbar-nav navbar-nav-right">
-              
-                 
+               
+                <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                  <i class="mdi mdi-share-variant"></i>
+                </span><a class="badge badge-gradient-info" href="../catalogos/generate.php?id=<?php echo $idadmin; ?>">catalogos/<?php echo $idadmin; ?></a></h3>
+             
+
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
                             aria-expanded="false">
@@ -85,7 +90,7 @@ $idusuario=1;
                     </li>
 
                     <li class="nav-item nav-logout d-none d-lg-block">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="../../login/logout.php" <?php echo $_SESSION['idusuarios']; ?>>
                             <i class="mdi mdi-power"></i>
                         </a>
                     </li>
@@ -130,4 +135,7 @@ $idusuario=1;
                     
                 </ul>
             </nav>
-            <!-- partial -->
+   
+    
+            
+     

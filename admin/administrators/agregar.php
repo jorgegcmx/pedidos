@@ -18,7 +18,7 @@ if ($com == true) {
 
     if ($contrasena == $contrasena2) {
 
-        $usu1->set_usuarios($id, $email, $contrasena, date('Y-m-d'), 1, 'Sin Calatogo','Mexico');
+        $usu1->set_usuarios($id, $email, $contrasena, date('Y-m-d'), 1,'Admin','Mexico');
         $sql = $usu1->add_usuarios();
         header("Location:../../login_admin.php?ok=1");
     }else{

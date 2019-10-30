@@ -1,14 +1,6 @@
+
 <?php
-if(isset($_GET['id'])){
-     $admin=$_GET['id'];
-     $id=$_GET['id'];
-
-
-
-$miArchivo = fopen($admin.".php", 'w') or die('No se puede abrir/crear el archivo!');
-$php='
-<?php
-$idusuario="'.$id.'";
+$idusuario="5";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -173,13 +165,3 @@ $idusuario="'.$id.'";
 <script src="../../assets/js/misc.js"></script>
 </body>
 </html>
-';
-
-fwrite($miArchivo, $php);
-fclose($miArchivo);
-
-header("Location:".$id.".php");
-}else{
-
-}
-?>

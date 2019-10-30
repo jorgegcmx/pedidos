@@ -38,7 +38,7 @@
                                                 <div class="card-body">
                                                     <div class="action-holder">
                                                         <h6>Codigo: <?php echo $fil->codigo; ?></h6>
-                                                        <label class="badge badge-gradient-info">Categorias
+                                                        <label class="badge badge-gradient-info">
                                                             <?php echo $fil->nombre; ?></label>
                                                         <a href="" data-toggle="modal"
                                                             data-target="#editarArticulo<?php echo $fil->idarticulos; ?>"
