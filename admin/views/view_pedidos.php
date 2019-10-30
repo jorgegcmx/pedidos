@@ -19,7 +19,7 @@
                           <th>IDPedido</th>
                           <th>Fecha de Creación</th>                          
                           <th></th> 
-                          <th>Importe Total</th> 
+                    
                           <th>Status</th>
                                                                         
                         </tr>
@@ -44,9 +44,7 @@
                           <th>Articulo</th>
                           <th>Cantidad</th>
                           <th>UniCost</th>
-                          <th>Subtotal
-                         
-                          </th>
+                          <th>Subtotal</th>
                           </tr>
                        
                           </thead>
@@ -67,13 +65,19 @@
                            <td>$<?php echo $det->subtotal; ?></td>
                            </tr>
                            <?php } ?>
+                           <tr>
+                           <td colspan="3"></td>
+                           <td><b>Total:</b></td>
+                           <td><b>$<?php echo $fil->total; ?></b></td>
+                           
+                           </tr>
                            </tbody>
                            </table>                         
                          
                            
              
                           </td> 
-                          <td><b>$<?php echo $fil->total; ?></b></td>                       
+                                     
                           <td> 
                           <button type="button" class="btn btn-gradient-info btn-rounded btn-icon">
                             <i class="mdi mdi-printer"></i>

@@ -90,7 +90,7 @@ $idusuario=1;
                     </li>
 
                     <li class="nav-item nav-logout d-none d-lg-block">
-                        <a class="nav-link" href="../../login/logout.php" <?php echo $_SESSION['idusuarios']; ?>>
+                        <a class="nav-link" href="../../login_admin/logout.php" <?php echo $_SESSION['idusuarios']; ?>>
                             <i class="mdi mdi-power"></i>
                         </a>
                     </li>
@@ -111,25 +111,25 @@ $idusuario=1;
                    <li class="nav-item">
                     <a class="nav-link" href="view_categorias.php">
                        <span class="menu-title">Tus Categorias</span>
-                          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                          <i class="mdi mdi-animation menu-icon"></i>
                     </a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="index.php">
                        <span class="menu-title">Tu Catalogo</span>
-                          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                          <i class="mdi mdi-apps menu-icon"></i>
                     </a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="view_clientes.php">
                        <span class="menu-title">Clientes</span>
-                          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                          <i class="mdi mdi-account-multiple menu-icon"></i>
                     </a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="view_pedidos.php">
                        <span class="menu-title">Pedidos</span>
-                          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                       <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     </a>
                     </li>
                     

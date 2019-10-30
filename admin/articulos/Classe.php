@@ -37,11 +37,9 @@ class Classe
     {
         try
         {
-            $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* FROM articulos A join categorias C on A.idcategoria=C.idcategorias";
-
-            if ($idusuarios != null) {
-                $sql .= " WHERE A.idusuarios = ?";
-            }
+            $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* FROM articulos A join categorias C on A.idcategoria=C.idcategorias
+             WHERE A.idusuarios = ? order by A.idarticulos DESC";
+            
 
             $consulta = $this->con->prepare($sql);
             if ($idusuarios != null) {

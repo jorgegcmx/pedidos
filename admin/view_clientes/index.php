@@ -34,12 +34,17 @@
                                                             alt="prduct image">
                                                       </a>
                                                     </div>
-                                                    <p class="product-title"><b><?php echo $fil->nombrearticulo; ?></b>
-                                                    </p>
-                                                    <p class="product-price"><b>
-                                                     Mayoreo $<?php echo $fil->precio_mayoreo; ?></b><br>                                                    
-                                                    </p>
-                                                    <form action='../articulos/addcar.php' method='post' >
+                                                 
+                                                   
+                                                    <ul class="list-group">
+                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                     <b><?php echo $fil->nombrearticulo; ?>  </b>                                                     
+                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                       Mayoreo
+                                                       <span class="badge badge-primary badge-pill">$<?php echo $fil->precio_mayoreo; ?></span>
+                                                     </li>
+                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                     <form action='../articulos/addcar.php' method='post' >
 									                                   <input type='hidden' name='txtidproductos' value="<?php echo $fil->idarticulos; ?>">
                                                      <input type='hidden' name='txtimg' value="<?php echo $fil->img; ?>">
 									                                   <input type='hidden' name='txtnombre' value="<?php echo $fil->nombrearticulo; ?>">
@@ -49,11 +54,16 @@
                                                     <br>
                                                     <button type="submit"  name='btnanadir'
                                                         class="btn btn-gradient-info btn-rounded btn-fw">+
-                                                        Agregar</button>
-
+                                                        Agregar a Pedido
+                                                    </button>
                                                     </form>
-                                                    <p class="product-description">
-                                                        <small><?php echo $fil->descripcion; ?></small></p>
+                                                     </li>
+                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                     <p class="product-description">
+                                                        <small><?php echo $fil->descripcion; ?></small>
+                                                    </p>                                                       
+                                                     </li>
+                                                   </ul>
                                                 </div>
                                             </div>
                                         </div>

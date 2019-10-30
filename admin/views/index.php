@@ -4,7 +4,7 @@
                     <div class="page-header">
                         <h3 class="page-title">  </h3>
                         <button class="btn btn-block btn-lg btn-gradient-primary mt-4" 
-                        data-toggle="modal" data-target="#exampleModal">+ Agregar Nueva Categoria </button>
+                        data-toggle="modal" data-target="#exampleModal">+ Agregar Nueva Articulo </button>
                     </div>
                     <div class="row">
                     <div class="col-lg-12 grid-margin stretch-card">
@@ -55,20 +55,27 @@
                                                             alt="prduct image">
                                                       </a>
                                                     </div>
-                                                    <p class="product-title"><b><?php echo $fil->nombrearticulo; ?></b>
+                                                 
+                                                    <ul class="list-group">
+                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                     <b><?php echo $fil->nombrearticulo; ?>  </b>                                                     
+                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                       Mayoreo
+                                                       <span class="badge badge-primary badge-pill">$<?php echo $fil->precio_mayoreo; ?></span>
+                                                     </li>
+                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                       Menudeo
+                                                       <span class="badge badge-primary badge-pill">$<?php echo $fil->precio_menudeo; ?></span>
+                                                     </li>
+                                                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                     <p class="product-description">
+                                                        <small><?php echo $fil->descripcion; ?></small>
                                                     </p>
-                                                    <h6>
-                                                    <p class="product-price">
-                                                     Mayoreo $<?php echo $fil->precio_mayoreo; ?>                                                  
-                                                    </p>
-                                                    </h6>                                                    
-                                                    <h6> <p class="product-price">
-                                                     Menudeo $<?php echo $fil->precio_menudeo; ?>                                                    
-                                                    </p></h6>
+                                                       
+                                                     </li>
+                                                   </ul>
                                                    
-                                                   
-                                                    <p class="product-description">
-                                                        <small><?php echo $fil->descripcion; ?></small></p>
+                                                    
                                                 </div>
                                             </div>
                                         </div>

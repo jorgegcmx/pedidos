@@ -94,7 +94,7 @@ $idusuario=$_SESSION['idusuarios_admin'];;
                     <li class="nav-item">
                     <a class="nav-link" href="index.php">
                        <span class="menu-title">Catalogo</span>
-                          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                       <i class="mdi mdi-apps menu-icon"></i>
                     </a>
                     </li>
                    
