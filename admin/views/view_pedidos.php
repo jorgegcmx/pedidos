@@ -18,10 +18,8 @@
                           <th>Cliente</th>
                           <th>IDPedido</th>
                           <th>Fecha de Creación</th>                          
-                          <th></th> 
-                    
-                          <th>Status</th>
-                                                                        
+                          <th></th>                     
+                          <th>Status</th>                                                                        
                         </tr>
                       </thead>
                       <tbody>                           
@@ -32,7 +30,15 @@
                            while($fil = $pedido->fetchObject()){   
                          ?>
                         <tr>
-                          <td><?php echo $fil->razon_social; ?></td>
+                          <td>                         
+                          <?php echo $fil->razon_social; ?>
+                          <form action="print.php" method="POST">
+                           <input type="hidden" name="idpedido" value="<?php echo $fil->idpedidos ?>">
+                           <button type="submit" class="btn btn-gradient-info btn-rounded btn-icon">
+                            <i class="mdi mdi-printer"></i>
+                          </button>
+                           </form>
+                          </td>
                           <td>#<?php echo $fil->idpedidos; ?></td>
                           <td><?php echo $fil->fecha; ?></td>
                           <td>                  
@@ -79,9 +85,8 @@
                           </td> 
                                      
                           <td> 
-                          <button type="button" class="btn btn-gradient-info btn-rounded btn-icon">
-                            <i class="mdi mdi-printer"></i>
-                          </button>
+                           
+                          
                           <?php 
                           if($fil->status=='PD'){
                             echo "<label class='badge badge-warning'>Pendiente de Pago</label>"; 

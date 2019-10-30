@@ -18,4 +18,4 @@ $usu1 = new Classe();
 $usu1->set_clientes($id, $email_cliente, $contrasena_cliente, $telefono, $direccion, $pais, $estado, $municipio, $rfc,$razon_social,$idusuarios_admin);
 $sql = $usu1->add_clientes();
 
-header("Location:../views/");
+header("Location:../../");

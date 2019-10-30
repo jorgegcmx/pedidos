@@ -182,6 +182,57 @@ class Classpedidos
             print "Error:" . $e->getmessage();
         }
     }
+/**********************************FUNCION DONDE MUSTRA LOS PEDIDOS A USUARIO ADMINISTRADOR IMPRIMIR*************/
+    public function get_listapedidos_admin_id($idadmin,$idpedidos)
+    {
+        try
+        {
+            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
+            
+            WHERE idusuarios_admin =? and idpedidos=?";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idadmin);
+            $consulta->bindParam(2, $idpedidos);
+
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
+
+
+    public function get_listapedidos_print($idcliente,$idpedidos)
+    {
+        try
+        {
+            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
+            
+            WHERE idcliente =? and idpedidos=?";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idcliente);
+            $consulta->bindParam(2, $idpedidos);
+
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
 
 
 

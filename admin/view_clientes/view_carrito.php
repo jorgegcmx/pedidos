@@ -42,10 +42,10 @@ if(isset($_SESSION["carrito"])){
                                        </td>
 									                      <td><?php echo $p->nombre; ?></td>
 									                      <td><?php echo $p->cantidad; ?></td>
-                                       <td><?php echo $p->precio; ?></td>
-									                      <td>$ <?php echo $p->subtotal; ?></td>
+                                       <td>$<?php echo $p->precio; ?></td>
+									                      <td><b>$<?php echo $p->subtotal; ?></b></td>
 									                       <td>
-                                        <a href="../articulos/eliminarprocar.php?id=<?php echo $i; ?>"
+                                        <a href="../articulos/eliminarprocar.php?idcar=<?php echo $i; ?>"
                                           id="confirmacion" class="badge badge-gradient-danger">
                                           <i class="mdi mdi-close"></i>
                                         </a>                                    

@@ -30,7 +30,14 @@
                            while($fil = $pedido->fetchObject()){   
                          ?>
                         <tr>
-                          <td>#<?php echo $fil->idpedidos; ?></td>
+                          <td>#<?php echo $fil->idpedidos; ?>
+                          <form action="print.php" method="POST">
+                           <input type="hidden" name="idpedido" value="<?php echo $fil->idpedidos ?>">
+                           <button type="submit" class="btn btn-gradient-info btn-rounded btn-icon">
+                            <i class="mdi mdi-printer"></i>
+                          </button>
+                           </form>
+                          </td>
                           <td><?php echo $fil->fecha; ?></td>
                           <td>
                   

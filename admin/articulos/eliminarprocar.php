@@ -1,5 +1,5 @@
 <?php
-$index = $_GET['id'];
+$index = $_GET['idcar'];
 session_start();
 
 if (isset($_SESSION["carrito"])) {
@@ -8,8 +8,8 @@ if (isset($_SESSION["carrito"])) {
     $carrito = array_values($carrito);
     $_SESSION["carrito"] = $carrito;
 
-    if (count($carrito) == 0) {
+    /*if (count($carrito) == 0) {
         session_unset($carrito);
-    }
+    }*/
 }
-header("location:../view_clientes/");
+header("location:../view_clientes/view_carrito.php");

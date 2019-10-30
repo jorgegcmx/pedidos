@@ -23,7 +23,8 @@ if (isset($_SESSION["carrito"])) {
 }
 array_push($carrito, $p);
 $_SESSION["carrito"] = $carrito;
-echo '<script type="text/javascript">
-			     alert("Producto Agregado a Carrito");
+
+               echo '<script type="text/javascript">
+			    
 				 window.location.href="../view_clientes/view_carrito.php";
 				 </script>';
