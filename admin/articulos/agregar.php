@@ -48,6 +48,7 @@ if (isset($_POST['id'])) {
                         }
 
                         header("Location:../views/");
+                        //echo "<script> window.history.go(-1);</script>";
 
                     } else {
 
