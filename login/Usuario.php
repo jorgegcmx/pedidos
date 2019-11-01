@@ -36,7 +36,7 @@ class Usuario
             if ($consulta->rowCount() == 1) {
                 $fila = $consulta->fetch();
                 $_SESSION['idclientes'] = $fila['idclientes'];
-                $_SESSION['email'] = $fila['email'];
+                $_SESSION['email_cliente'] = $fila['email_cliente'];
                 $_SESSION['idusuarios_admin'] = $fila['idusuarios_admin'];             
 
                 return true;

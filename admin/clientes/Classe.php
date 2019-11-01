@@ -169,4 +169,96 @@ class Classe
         }
     }
 
+/*********************************************************************ACTUALIZAMOS LA CONTRASEÑA********************************/
+
+public function set_contrasena($id, $contrasena_cliente)
+{
+    $this->idclientes = $id;   
+    $this->contrasena_cliente = $contrasena_cliente;
+
+}
+
+public function add_contrasena()
+{
+    try {
+        if ($this->idclientes != null) {
+        
+            $sql = "UPDATE  clientes"
+                . " SET contrasena_cliente = ?"               
+                . " WHERE idclientes =?";
+        }
+
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindparam(1, $this->contrasena_cliente);    
+
+        if ($this->idclientes != null) {
+            $consulta->bindparam(2, $this->idclientes);
+        }
+        $consulta->execute();
+        return $sql;
+        $this->con = null;
+
+    } catch (PDOEception $ex) {
+        print "Error:" . $e->getMessage();
+    }
+}
+
+/*********************************************************************ACTUALIZAMOS INFORMACION DE CONTACTO********************************/
+
+public function set_informacion_contacto($id, $telefono, $direccion, $rfc)
+{
+    $this->idclientes = $id;   
+    $this->telefono = $telefono;   
+    $this->direccion = $direccion;
+    $this->rfc = $rfc;
+
+}
+
+public function add_informacion_contacto()
+{
+    try {
+        if ($this->idclientes != null) {
+        
+            $sql = "UPDATE  clientes"
+                . " SET telefono = ?," 
+                . " direccion = ?," 
+                . " rfc = ?"                     
+                . " WHERE idclientes = ? ";
+        }
+
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindparam(1, $this->telefono);  
+        $consulta->bindparam(2, $this->direccion);
+        $consulta->bindparam(3, $this->rfc);    
+
+        if ($this->idclientes != null) {
+            $consulta->bindparam(4, $this->idclientes);
+        }
+        $consulta->execute();
+        return $sql;
+        $this->con = null;
+
+    } catch (PDOEception $ex) {
+        print "Error:" . $e->getMessage();
+    }
+}
+
+public function comprobar($email)
+{
+    try {
+        $sql = "SELECT * FROM  clientes WHERE email_cliente= ?";
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindParam(1, $email);           
+        $consulta->execute();
+        if ($consulta->rowCount() == 1) {
+            return true;
+
+        } else {
+            return false;
+        }
+    } catch (PDOExeption $e) {
+        print "Error: " . $e->getMessage();
+    }
+}
+    
 } //cierra clase

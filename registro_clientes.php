@@ -82,7 +82,7 @@
                   <div class="mt-3">
                     <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" >Registrar</button>
                   </div>
-                  <div class="text-center mt-4 font-weight-light"> Ya tienes una Cuenta? <a href="index.php" class="text-primary">Ingresar</a>
+                  <div class="text-center mt-4 font-weight-light"> Ya tienes una Cuenta? <a href="login_clientes.php" class="text-primary">Ingresar</a>
                   </div>
                 </form>
               </div>

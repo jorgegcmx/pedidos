@@ -98,7 +98,46 @@ $idusuario=1;
         </nav>
 
 
-<!-- Modal -->
+
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:../../partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                   <li class="nav-item">
+                    <a class="nav-link" href="view_categorias.php">
+                       <span class="menu-title">Tus Categorias</span>
+                          <i class="mdi mdi-animation menu-icon"></i>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="index.php">
+                       <span class="menu-title">Tu Catalogo</span>
+                          <i class="mdi mdi-apps menu-icon"></i>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="view_clientes.php">
+                       <span class="menu-title">Clientes</span>
+                          <i class="mdi mdi-account-multiple menu-icon"></i>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="view_pedidos.php">
+                       <span class="menu-title">Pedidos en Preceso</span>
+                       <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="view_pedidos_completados.php">
+                       <span class="menu-title">Pedidos Completados</span>
+                       <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                    </a>
+                    </li>
+                    
+                </ul>
+            </nav>
+   <!-- Modal -->
 <div class="modal fade" id="perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -152,45 +191,6 @@ $idusuario=1;
     </div>
   </div>
 </div>
-        <!-- partial -->
-        <div class="container-fluid page-body-wrapper">
-            <!-- partial:../../partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
-                   <li class="nav-item">
-                    <a class="nav-link" href="view_categorias.php">
-                       <span class="menu-title">Tus Categorias</span>
-                          <i class="mdi mdi-animation menu-icon"></i>
-                    </a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="index.php">
-                       <span class="menu-title">Tu Catalogo</span>
-                          <i class="mdi mdi-apps menu-icon"></i>
-                    </a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="view_clientes.php">
-                       <span class="menu-title">Clientes</span>
-                          <i class="mdi mdi-account-multiple menu-icon"></i>
-                    </a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="view_pedidos.php">
-                       <span class="menu-title">Pedidos en Preceso</span>
-                       <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                    </a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="view_pedidos_completados.php">
-                       <span class="menu-title">Pedidos Completados</span>
-                       <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                    </a>
-                    </li>
-                    
-                </ul>
-            </nav>
-   
     
             
      

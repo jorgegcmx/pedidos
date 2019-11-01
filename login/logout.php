@@ -10,6 +10,6 @@ session_start();
 		     
 			 echo'<script type="text/javascript">
 			     alert("Sesión Cerrada");
-				 window.location.href="../index.php";
+				 window.location.href="../login_clientes.php";
 				 </script>';
 ?>

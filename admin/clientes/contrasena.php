@@ -1,8 +1,8 @@
-<?php 
+<?php
 include_once 'Classe.php';
-$usu1 = new Classes();
+$usu1 = new Classe();
 
-$id = $_POST['idusuarios'];
+$id = $_POST['idclientes'];
 $contrasena = trim($_POST['contrasena']);
 $contrasena2 = trim($_POST['contrasena2']);
 
@@ -13,17 +13,13 @@ if ($contrasena == $contrasena2) {
 
     echo '<script type="text/javascript">
     alert(" Contraseña Actualizada con Exito!");
-    window.location.href="../views/";
+    window.location.href="../view_clientes/";
     </script>';
 
-}else{
+} else {
     echo '<script type="text/javascript">
     alert(" Error! las contraseñas no conciden");
-    window.location.href="../views/";
+    window.location.href="../view_clientes/";
     </script>';
 
 }
-                                           
-
-                 
-?>

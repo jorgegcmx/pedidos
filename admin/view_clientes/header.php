@@ -5,7 +5,8 @@ if(!isset($_SESSION['idclientes'])){
 }
 
 $idclientes=$_SESSION['idclientes']; 
-$idusuario=$_SESSION['idusuarios_admin'];;	
+$idusuario=$_SESSION['idusuarios_admin'];
+$email=$_SESSION['email_cliente'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,6 +30,68 @@ $idusuario=$_SESSION['idusuarios_admin'];;
     </style>
 </head>
 <body>
+<div class="modal fade" id="perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Perfil de Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                     
+                      <?php 
+                          include_once '../clientes/Class_profile.php';	
+                          $clientes = new Class_profile();                                         
+                          $cli = $clientes->get_clientes_perfil($idclientes);                             
+                           while($ad = $cli->fetchObject()){   
+                     ?>                      
+                    
+                       <ul class="list-group">
+                       <li class="list-group-item"><b>Nombre: </b> <?php echo $ad->razon_social; ?></li>
+                       <li class="list-group-item"><b>email: </b> <?php echo $ad->email_cliente; ?></li>
+                       <li class="list-group-item"><b>Pais: </b><?php echo $ad->pais; ?></li>
+                       <li class="list-group-item"><b>Estado: </b><?php echo $ad->estado; ?></li>
+                       <li class="list-group-item"><b>Municipio: </b><?php echo $ad->municipio; ?></li>
+                       <li class="list-group-item"><b>Contraseña Actual: </b><?php echo $ad->contrasena_cliente; ?></li>                         
+                       </ul>                    
+                       <br>
+                       <form action="../clientes/informacion.php" method="post"  >  
+                       <input type="hidden" name="idclientes" value="<?php echo $idclientes; ?>"> 
+                       <label>Telefono</label>
+                       <div class="form-group">
+                        <input type="text"  name="telefono" value="<?php echo $ad->telefono; ?>" class="form-control form-control-lg fondo"  >
+                       </div>
+                       <label>Dirección</label>
+                       <div class="form-group">
+                       <input type="text"  name="direccion" value="<?php echo $ad->direccion; ?>"  class="form-control form-control-lg fondo" >
+                      </div>
+                      <label>RFC</label>
+                       <div class="form-group">
+                       <input type="text"  name="rfc" value="<?php echo $ad->rfc; ?>"  class="form-control form-control-lg fondo" >
+                      </div>                  
+                      <button type="submit"   class="btn btn-gradient-primary mr-2">Actualizar datos de Contacto </button> 
+                      </form> 
+                       <br>
+                       <form action="../clientes/contrasena.php" method="post"  >  
+                       <input type="hidden" name="idclientes" value="<?php echo $idclientes; ?>"> 
+                       <label>Nueva Contraseña</label>
+                       <div class="form-group">
+                        <input type="password"  name="contrasena"  class="form-control form-control-lg fondo" required >
+                       </div>
+                       <label>Repirta la Contraseña</label>
+                       <div class="form-group">
+                       <input type="password"  name="contrasena2"  class="form-control form-control-lg fondo"  required>
+                      </div>
+                      <button type="submit"   class="btn btn-gradient-primary mr-2">Actualizar Contraseña </button> 
+                      </form>                    
+                      <?php } ?>
+                    
+      </div>   
+    </div>
+  </div>
+</div>
     <div class="container-scroller">
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -61,14 +124,18 @@ $idusuario=$_SESSION['idusuarios_admin'];;
               </a>             
                </li>
                  
-                    <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle"  href="#" 
-                            aria-expanded="false">                          
-                            <div class="nav-profile-text">
-                                <p class="mb-1 text-black"><?php echo $_SESSION['email']; ?></p>
-                            </div>
-                        </a>
-                    </li>
+               <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+           
+                <div class="nav-profile-text">
+                <p class="mb-1 text-black"><?php echo $email;?></p>
+                </div>
+              </a>
+              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#perfil">
+                  <i class="mdi mdi-cached mr-2 text-success"></i> Perfil </a>              
+                </div>
+                </li>
 
                     <li class="nav-item nav-logout d-none d-lg-block">
                         <a class="nav-link" href="../../login/logout.php" <?php echo $_SESSION['idclientes']; ?>>
@@ -83,7 +150,10 @@ $idusuario=$_SESSION['idusuarios_admin'];;
                     <span class="mdi mdi-menu"></span>
                 </button>
             </div>
+            
         </nav>
+        <!-- Modal -->
+
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:../../partials/_sidebar.html -->
@@ -112,3 +182,4 @@ $idusuario=$_SESSION['idusuarios_admin'];;
                 </ul>
             </nav>
             <!-- partial -->
+ 
