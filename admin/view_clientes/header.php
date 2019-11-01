@@ -75,7 +75,7 @@ $idusuario=$_SESSION['idusuarios_admin'];;
                             <i class="mdi mdi-power"></i>
                         </a>
                     </li>
-                    
+                
 
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
@@ -101,6 +101,12 @@ $idusuario=$_SESSION['idusuarios_admin'];;
                     <a class="nav-link" href="view_pedidos.php">
                        <span class="menu-title">Pedidos</span>
                           <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="view_pedidos_completados.php">
+                       <span class="menu-title">Pedidos Completados</span>
+                       <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     </a>
                     </li>
                 </ul>

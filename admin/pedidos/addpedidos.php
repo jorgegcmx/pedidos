@@ -12,7 +12,6 @@ $total = $_SESSION["total"];
 $idcliente = $_POST["idcliente"];
 $status = 'PDP';
 
-//echo $total;
 
 $usu1->set_pedidos($id, $fecha, $total, $idcliente, $status);
 $sql = $usu1->add_pedidos();
@@ -36,7 +35,7 @@ $save = new Classpedidos();
 
 foreach ($carrito as $p) {
 
-    $save->set_detalle_pedidos(null, $p->idproductos, $p->cantidad, $p->subtotal, $p->precio, $ultimo);
+    $save->set_detalle_pedidos(null, $p->idproductos, $p->cantidad, $p->subtotal, $p->precio, $ultimo,$p->comentario);
     $sql = $save->add_detalle_pedidos();
 
 }

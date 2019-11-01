@@ -46,11 +46,15 @@
                                                      <li class="list-group-item d-flex justify-content-between align-items-center">
                                                      <form action='../articulos/addcar.php' method='post' >
 									                                   <input type='hidden' name='txtidproductos' value="<?php echo $fil->idarticulos; ?>">
+                                                     <input type='hidden' name='txtcategoria' value="<?php echo $fil->nombre; ?>">
                                                      <input type='hidden' name='txtimg' value="<?php echo $fil->img; ?>">
 									                                   <input type='hidden' name='txtnombre' value="<?php echo $fil->nombrearticulo; ?>">
 									                                   <input type='hidden' name='txtprecio' value="<?php echo $fil->precio_mayoreo; ?>">									                                                              
                                                      <label>Cantidad</label>
-                                                    <input id='valor2' type="number" class="form-control fondo" size='5' onKeyPress='return acceptNum(event)'  required name='txtcantidad'>
+                                                    <input  type="number" class="form-control fondo" size='5' onKeyPress='return acceptNum(event)'  required name='txtcantidad'>
+                                                    <br>
+                                                    <label>Agrega Una descripción</label>
+                                                    <input  type="text" class="form-control fondo" size='5'  name='txtcomentario'>
                                                     <br>
                                                     <button type="submit"  name='btnanadir'
                                                         class="btn btn-gradient-info btn-rounded btn-fw">+

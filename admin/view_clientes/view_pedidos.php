@@ -18,7 +18,7 @@
                           <th>IDPedido</th>
                           <th>Fecha de Creación</th>                          
                           <th></th>                          
-                          <th>Status</th>                                                                        
+                                                                                     
                         </tr>
                       </thead>
                       <tbody>                           
@@ -29,7 +29,7 @@
                            while($fil = $pedido->fetchObject()){   
                          ?>
                         <tr>
-                          <td>#<?php echo $fil->idpedidos; ?>
+                          <td>#<?php echo $fil->idpedidos; ?><br><br>
                           <form action="print.php" method="POST">
                            <input type="hidden" name="idpedido" value="<?php echo $fil->idpedidos ?>">
                            <button type="submit" class="btn btn-gradient-info btn-rounded btn-icon">
@@ -48,7 +48,22 @@
                           <th>Articulo</th>
                           <th>Cantidad</th>
                           <th>UniCost</th>
-                          <th>Subtotal  </th>
+                          <th>
+                          
+                          <?php 
+                          if($fil->status=='PD'){
+                            echo "<label class='badge badge-warning'>Pendiente de Pago</label>"; 
+                          }elseif($fil->status=='PR'){
+                            echo "<label class='badge badge-info'>Pago Recibido</label>"; 
+                          }elseif($fil->status=='EV'){
+                            echo "<label class='badge badge-primary'>En proceso de Envio</label>"; 
+                          } elseif($fil->status=='RC'){
+                            echo "<label class='badge badge-success'>Recibido por Cliente</label>"; 
+                          }                            
+                          ?>                           
+                          <br>
+                          Subtotal                          
+                          </th>                         
                           </tr>
                        
                           </thead>
@@ -63,10 +78,14 @@
                            <td><img src="../articulos/<?php echo $det->img; ?>" 
                                        class="img-fluid"  alt="Responsive Image" 
                                        width="307" height="240" /></td>
-                           <td><?php echo $det->nombre; ?></td>
+                           <td>
+                           <?php echo $det->nombre; ?><br>
+                           <small><?php echo $det->comentario; ?></small>
+                           </td>
                            <td><?php echo $det->cantidad; ?></td>
                            <td>$<?php echo $det->costouni; ?></td>
                            <td>$<?php echo $det->subtotal; ?></td>
+                         
                            </tr>
                            <?php } ?>
                            <tr>
@@ -75,23 +94,8 @@
                            <td><b>$<?php echo $fil->total; ?></b></td>
                            </tr>
                            </tbody>
-                           </table>                         
-                         
-                           
-             
-                          </td> 
-                              
-                          <td> 
-                      
-                          <?php 
-                          if($fil->status=='PD'){
-                            echo "<label class='badge badge-warning'>Pendiente de Pago</label>"; 
-                          }elseif($fil->status=='PG'){
-                            echo "<label class='badge badge-warning'>Pagado</label>"; 
-                          }                          
-                          ?>
-                          </td> 
-                                             
+                           </table>               
+                          </td>                                       
                         </tr>
                         <?php } ?>
                       </tbody>

@@ -16,6 +16,7 @@ class Classpedidos
     private $subtotal;
     private $costouni;
     private $idpedido;
+    private $comentario;
 
     public function __construct()
     {
@@ -55,44 +56,7 @@ class Classpedidos
             print "Error:" . $e->getMessage();
         }
     }
-/*********************************************************************DESTALLE PEDIDOS********************************/
-    public function set_detalle_pedidos($id, $idarticulo, $cantidad, $subtotal, $costouni, $idpedido)
-    {
-        $this->iddetalle_pedidos = $id;
-        $this->idarticulo = $idarticulo;
-        $this->cantidad = $cantidad;
-        $this->subtotal = $subtotal;
-        $this->costouni = $costouni;
-        $this->idpedido = $idpedido;
 
-    }
-
-    public function add_detalle_pedidos()
-    {
-        try {
-
-            $sql = "INSERT INTO detalle_pedidos VALUES(0,?,?,?,?,?)";
-
-            $consulta = $this->con->prepare($sql);
-            $consulta->bindparam(1, $this->idarticulo);
-            $consulta->bindparam(2, $this->cantidad);
-            $consulta->bindparam(3, $this->subtotal);
-            $consulta->bindparam(4, $this->costouni);
-            $consulta->bindparam(5, $this->idpedido);
-
-            if ($this->iddetalle_pedidos != null) {
-                $consulta->bindparam(6, $this->iddetalle_pedidos);
-            }
-            $consulta->execute();
-            return $sql;
-            $this->con = null;
-
-        } catch (PDOEception $ex) {
-            print "Error:" . $e->getMessage();
-        }
-    }
-
-/*********************************************************************CIERRE DESTALLE PEDIDOS********************************/
     public function get_pedido($idcliente)
     {
         try
@@ -117,7 +81,7 @@ class Classpedidos
     {
         try
         {
-            $sql = "SELECT * FROM pedidos WHERE idcliente =? order by idpedidos DESC";
+            $sql = "SELECT * FROM pedidos WHERE idcliente =? and status<>'RC' order by idpedidos DESC";
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idcliente);
@@ -134,66 +98,38 @@ class Classpedidos
             print "Error:" . $e->getmessage();
         }
     }
+    public function get_listapedidos_completados($idcliente)
+    {
+        try
+        {
+            $sql = "SELECT * FROM pedidos WHERE idcliente =? and status='RC' order by idpedidos DESC";
 
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idcliente);
+
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
     
 
     public function get_detalle_pedido($idpedido)
     {
         try
         {
-            $sql = "SELECT * FROM detalle_pedidos inner join articulos on articulos.idarticulos=detalle_pedidos.idarticulo WHERE idpedido =? ";
+            $sql = "SELECT * FROM detalle_pedidos inner join articulos on articulos.idarticulos=detalle_pedidos.idarticulo 
+            WHERE idpedido =? ";
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idpedido);
-
-            $consulta->execute();
-            $this->con = null;
-
-            if ($consulta->rowCount() > 0) {
-                return $consulta;
-            } else {
-                return $consulta;
-            } //fin else
-        } catch (PDOExeption $e) {
-            print "Error:" . $e->getmessage();
-        }
-    }
-/**********************************FUNCION DONDE MUSTRA LOS PEDIDOS A USUARIO ADMINISTRADOR*************/
-    public function get_listapedidos_admin($idadmin)
-    {
-        try
-        {
-            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
-            
-            WHERE idusuarios_admin =? order by fecha DESC";
-
-            $consulta = $this->con->prepare($sql);
-            $consulta->bindParam(1, $idadmin);
-
-            $consulta->execute();
-            $this->con = null;
-
-            if ($consulta->rowCount() > 0) {
-                return $consulta;
-            } else {
-                return $consulta;
-            } //fin else
-        } catch (PDOExeption $e) {
-            print "Error:" . $e->getmessage();
-        }
-    }
-/**********************************FUNCION DONDE MUSTRA LOS PEDIDOS A USUARIO ADMINISTRADOR IMPRIMIR*************/
-    public function get_listapedidos_admin_id($idadmin,$idpedidos)
-    {
-        try
-        {
-            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
-            
-            WHERE idusuarios_admin =? and idpedidos=?";
-
-            $consulta = $this->con->prepare($sql);
-            $consulta->bindParam(1, $idadmin);
-            $consulta->bindParam(2, $idpedidos);
 
             $consulta->execute();
             $this->con = null;
@@ -213,9 +149,8 @@ class Classpedidos
     {
         try
         {
-            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
-            
-            WHERE idcliente =? and idpedidos=?";
+            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente            
+                    WHERE idcliente =? and idpedidos=? ";
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idcliente);
@@ -285,4 +220,150 @@ class Classpedidos
             print "Error: " . $e->getMessage();
         }
     }
+
+    /*********************************************************************DESTALLE PEDIDOS********************************/
+    public function set_detalle_pedidos($id, $idarticulo, $cantidad, $subtotal, $costouni, $idpedido,$comentario)
+    {
+        $this->iddetalle_pedidos = $id;
+        $this->idarticulo = $idarticulo;
+        $this->cantidad = $cantidad;
+        $this->subtotal = $subtotal;
+        $this->costouni = $costouni;
+        $this->idpedido = $idpedido;
+        $this->comentario = $comentario;
+
+    }
+
+    public function add_detalle_pedidos()
+    {
+        try {
+
+            $sql = "INSERT INTO detalle_pedidos VALUES(0,?,?,?,?,?,?)";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindparam(1, $this->idarticulo);
+            $consulta->bindparam(2, $this->cantidad);
+            $consulta->bindparam(3, $this->subtotal);
+            $consulta->bindparam(4, $this->costouni);
+            $consulta->bindparam(5, $this->idpedido);
+            $consulta->bindparam(6, $this->comentario);
+
+            if ($this->iddetalle_pedidos != null) {
+                $consulta->bindparam(7, $this->iddetalle_pedidos);
+            }
+            $consulta->execute();
+            return $sql;
+            $this->con = null;
+
+        } catch (PDOEception $ex) {
+            print "Error:" . $e->getMessage();
+        }
+    }
+
+/*********************************************************************CIERRE DESTALLE PEDIDOS********************************/
+/**********************************FUNCION DONDE MUESTRA LOS PEDIDOS A USUARIO ADMINISTRADOR*************/
+public function get_listapedidos_admin($idadmin)
+{
+    try
+    {
+        $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente        
+                WHERE idusuarios_admin =? and status<>'RC' order by fecha DESC";
+
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindParam(1, $idadmin);
+
+        $consulta->execute();
+        $this->con = null;
+
+        if ($consulta->rowCount() > 0) {
+            return $consulta;
+        } else {
+            return $consulta;
+        } //fin else
+    } catch (PDOExeption $e) {
+        print "Error:" . $e->getmessage();
+    }
+}
+
+public function get_listapedidos_admin_complatados($idadmin)
+{
+    try
+    {
+        $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente        
+                WHERE idusuarios_admin =? and status='RC' order by fecha DESC";
+
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindParam(1, $idadmin);
+
+        $consulta->execute();
+        $this->con = null;
+
+        if ($consulta->rowCount() > 0) {
+            return $consulta;
+        } else {
+            return $consulta;
+        } //fin else
+    } catch (PDOExeption $e) {
+        print "Error:" . $e->getmessage();
+    }
+}
+/**********************************FUNCION DONDE MUSTRA LOS PEDIDOS A USUARIO ADMINISTRADOR IMPRIMIR*************/
+public function get_listapedidos_admin_id($idadmin,$idpedidos)
+{
+    try
+    {
+        $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente        
+                 WHERE idusuarios_admin =? and idpedidos=? ";
+
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindParam(1, $idadmin);
+        $consulta->bindParam(2, $idpedidos);
+
+        $consulta->execute();
+        $this->con = null;
+
+        if ($consulta->rowCount() > 0) {
+            return $consulta;
+        } else {
+            return $consulta;
+        } //fin else
+    } catch (PDOExeption $e) {
+        print "Error:" . $e->getmessage();
+    }
+}
+
+
+/*********************************************************************Actualiza Status del Pedido********************************/
+
+public function set_pedidos_update_status($id, $status)
+{
+    $this->idpedidos = $id;   
+    $this->status = $status;
+
+}
+
+public function add_pedidos_update_status()
+{
+    try {
+        if ($this->idpedidos != null) {
+        
+            $sql = "UPDATE  pedidos"
+                . " SET status = ?"               
+                . " WHERE idpedidos =?";
+        }
+
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindparam(1, $this->status);    
+
+        if ($this->idpedidos != null) {
+            $consulta->bindparam(2, $this->idpedidos);
+        }
+        $consulta->execute();
+        return $sql;
+        $this->con = null;
+
+    } catch (PDOEception $ex) {
+        print "Error:" . $e->getMessage();
+    }
+}
 } //fin de la clase

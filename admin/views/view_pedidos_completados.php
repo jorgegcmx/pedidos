@@ -8,7 +8,7 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                    <div class="card">
                     <div class="card-body">
-                    <h4 class="card-title">Pedidos</h4>
+                    <h4 class="card-title">Pedidos Completados y Recibidos por el Cliente</h4>
                     <p class="card-description"><code></code>
                     </p>
                     <div class="table-responsive">
@@ -26,7 +26,7 @@
                         <?php 
                           include_once '../pedidos/Classpedidos.php';	
                           $pedidos = new Classpedidos();                                         
-                          $pedido = $pedidos->get_listapedidos_admin($idadmin);                             
+                          $pedido = $pedidos->get_listapedidos_admin_complatados($idadmin);                             
                            while($fil = $pedido->fetchObject()){   
                          ?>
                         <tr>

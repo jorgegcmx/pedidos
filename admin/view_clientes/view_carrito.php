@@ -11,10 +11,11 @@ include_once 'header.php';
                     <div class="row">
                     <div class="col-lg-12 grid-margin stretch-card">
                    <div class="card">
+                   <input type="button" OnClick="location.href='index.php'" class="btn btn-gradient-primary btn-rounded btn-fw" value="+ Agregar más Articulos"> 
                     <div class="card-body">
-                    <h4 class="card-title">Articulos en Carrito</h4>
-                    <p class="card-description"><code></code>
-                    </p>
+                    <h4 class="card-title">Articulos en Carrito</h4>                    
+                    
+                    <div class="table-responsive">
                     <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
 <?php
 if(isset($_SESSION["carrito"])){
@@ -26,6 +27,7 @@ if(isset($_SESSION["carrito"])){
 			<th>Cantidad</th>
       <th>UniCost</th>
 			<th>Subtotal</th>
+      <th>Comentario</th>
 			<th></th>
 			</tr>
             <?php 
@@ -38,12 +40,12 @@ if(isset($_SESSION["carrito"])){
                                        <img src="../articulos/<?php echo $p->img; ?>" 
                                        class="img-fluid"  alt="Responsive Image" 
                                        width="307" height="240" /> 
-
-                                       </td>
+                                        </td>
 									                      <td><?php echo $p->nombre; ?></td>
 									                      <td><?php echo $p->cantidad; ?></td>
-                                       <td>$<?php echo $p->precio; ?></td>
+                                        <td>$<?php echo $p->precio; ?></td>
 									                      <td><b>$<?php echo $p->subtotal; ?></b></td>
+                                        <td><p><?php echo $p->comentario; ?></p></td>
 									                       <td>
                                         <a href="../articulos/eliminarprocar.php?idcar=<?php echo $i; ?>"
                                           id="confirmacion" class="badge badge-gradient-danger">
@@ -59,7 +61,8 @@ if(isset($_SESSION["carrito"])){
                     }
                     ?>
                		<tr>
-					         <td colspan='4'><b><h2>Total:</h2></b></td>
+					         <td colspan='3'></td>
+                   <td ><b><h2>Total:</h2></b></td>
 					         <td><b><h2>$ <?php echo $total; ?></h2></b></td>                   
                     <?php 
                     $_SESSION ["total"]=$total;
@@ -85,6 +88,7 @@ if(isset($_SESSION["carrito"])){
 
                     ?>
                   </table>
+                  </div>
                   </div>
                 </div>
               </div>

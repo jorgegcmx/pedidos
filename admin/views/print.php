@@ -81,7 +81,9 @@ function imprimir()
                            ?>
                            <tr>
                            <td></td>
-                           <td><?php echo $det->nombre; ?></td>
+                           <td><?php echo $det->nombre; ?><br>
+                           <small><?php echo $det->comentario; ?></small>                            
+                           </td>
                            <td><?php echo $det->cantidad; ?></td>
                            <td>$<?php echo $det->costouni; ?></td>
                            <td>$<?php echo $det->subtotal; ?></td>

@@ -4,6 +4,8 @@ $p = new Product();
 
 $p->idproductos = $_POST['txtidproductos'];
 
+$p->categoria = $_POST['txtcategoria'];
+
 $p->img = $_POST['txtimg'];
 
 $p->nombre = $_POST['txtnombre'];
@@ -11,6 +13,8 @@ $p->nombre = $_POST['txtnombre'];
 $p->precio = $_POST['txtprecio'];
 
 $p->cantidad = $_POST['txtcantidad'];
+
+$p->comentario = $p->categoria." (".$_POST['txtcomentario'].")";
 
 $p->subtotal = $p->precio * $p->cantidad;
 

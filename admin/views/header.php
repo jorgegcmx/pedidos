@@ -120,7 +120,13 @@ $idusuario=1;
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="view_pedidos.php">
-                       <span class="menu-title">Pedidos</span>
+                       <span class="menu-title">Pedidos en Preceso</span>
+                       <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="view_pedidos_completados.php">
+                       <span class="menu-title">Pedidos Completados</span>
                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     </a>
                     </li>
