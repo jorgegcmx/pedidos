@@ -7,7 +7,20 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
+                            
                                 <div class="card-body">
+      
+                              <div class="search-field d-none d-md-block">
+                                 <form class="d-flex align-items-center h-100" action="." method="POST">
+                                <div class="input-group">
+                                   <div class="input-group-prepend bg-transparent">
+                                 <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                                  </div>
+                                  <input type="text" name="producto" class="form-control bg-transparent border-0" autofocus   placeholder="Buscar Producto">
+                                   </div>
+                                 </form>
+                                </div>
+
                                     <div class="row product-item-wrapper">
                                         <?php 
                                           include_once '../articulos/Classe.php';	
@@ -102,4 +115,5 @@
                 </div>
                 <!-- page-body-wrapper ends -->
             </div>
+            
 <?php include_once 'footer.php';?>
