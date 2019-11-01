@@ -1,6 +1,6 @@
 <?php
 require_once '../conexion/Conexion.php';
-class Classe
+class Classes
 {
     private static $instancia;
     private $con;
@@ -31,7 +31,27 @@ class Classe
 
     }
 
-    
+    public function get_usuarios($idusuarios)
+    {
+        try
+        {
+            $sql = "SELECT *  FROM usuarios WHERE idusuarios = ? ";
+
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idusuarios);          
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
 
     public function add_usuarios()
     {
@@ -88,4 +108,74 @@ class Classe
             print "Error: " . $e->getMessage();
         }
     }
+
+
+    /*********************************************************************ACTUALIZAMOS El LOGO********************************/
+
+public function set_logo($id, $ruta_sitio_web)
+{
+    $this->idusuarios = $id;   
+    $this->ruta_sitio_web = $ruta_sitio_web;
+
+}
+
+public function add_logo()
+{
+    try {
+        if ($this->idusuarios != null) {
+        
+            $sql = "UPDATE  usuarios"
+                . " SET ruta_sitio_web = ?"               
+                . " WHERE idusuarios =?";
+        }
+
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindparam(1, $this->ruta_sitio_web);    
+
+        if ($this->idusuarios != null) {
+            $consulta->bindparam(2, $this->idusuarios);
+        }
+        $consulta->execute();
+        return $sql;
+        $this->con = null;
+
+    } catch (PDOEception $ex) {
+        print "Error:" . $e->getMessage();
+    }
+}
+/*********************************************************************ACTUALIZAMOS LA CONTRASEÑA********************************/
+
+public function set_contrasena($id, $contrasena)
+{
+    $this->idusuarios = $id;   
+    $this->contrasena = $contrasena;
+
+}
+
+public function add_contrasena()
+{
+    try {
+        if ($this->idusuarios != null) {
+        
+            $sql = "UPDATE  usuarios"
+                . " SET contrasena = ?"               
+                . " WHERE idusuarios =?";
+        }
+
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindparam(1, $this->contrasena);    
+
+        if ($this->idusuarios != null) {
+            $consulta->bindparam(2, $this->idusuarios);
+        }
+        $consulta->execute();
+        return $sql;
+        $this->con = null;
+
+    } catch (PDOEception $ex) {
+        print "Error:" . $e->getMessage();
+    }
+}
 } 
+
+

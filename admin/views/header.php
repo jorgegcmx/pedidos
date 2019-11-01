@@ -6,7 +6,8 @@ if(!isset($_SESSION['idusuarios'])){
 }
 
 $idadmin=$_SESSION['idusuarios']; 
-$email=$_SESSION['email'];;	
+$email=$_SESSION['email'];
+$ruta_sitio_web=$_SESSION['ruta_sitio_web'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -66,27 +67,27 @@ $idusuario=1;
                   <i class="mdi mdi-share-variant"></i>
                 </span><a class="badge badge-gradient-info" href="../catalogos/generate.php?id=<?php echo $idadmin; ?>">catalogos/<?php echo $idadmin; ?></a></h3>
              
-
-                    <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
-                            aria-expanded="false">
-                            <div class="nav-profile-img">
-                                <img src="http://ceramicachecuan.com/wp-content/uploads/2017/03/cropped-cropped-logochecuan.jpg"
-                                    alt="image">
-                                <span class="availability-status online"></span>
-                            </div>
-                            <div class="nav-profile-text">
-                                <p class="mb-1 text-black"><?php echo $email;?></p>
-                            </div>
-                        </a>
-                    </li>
+             <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <div class="nav-profile-img">
+                <img src="<?php echo $ruta_sitio_web; ?>"  alt="image">
+                  <span class="availability-status online"></span>
+                </div>
+                <div class="nav-profile-text">
+                <p class="mb-1 text-black"><?php echo $email;?></p>
+                </div>
+              </a>
+              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#perfil">
+                  <i class="mdi mdi-cached mr-2 text-success"></i> Perfil </a>              
+                </div>
+                </li>
 
                     <li class="nav-item nav-logout d-none d-lg-block">
                         <a class="nav-link" href="../../login_admin/logout.php" <?php echo $_SESSION['idusuarios']; ?>>
                             <i class="mdi mdi-power"></i>
                         </a>
-                    </li>
-                    
+                  </li>                   
 
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
@@ -95,6 +96,62 @@ $idusuario=1;
                 </button>
             </div>
         </nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="perfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Perfil de Usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                     
+                      <?php 
+                          include_once '../administrators/Classe.php';	
+                          $administratos = new Classes();                                         
+                          $adminis = $administratos->get_usuarios($idadmin);                             
+                           while($ad = $adminis->fetchObject()){   
+                         ?>                      
+                    
+                       <ul class="list-group">
+                       <li class="list-group-item">email:<?php echo $ad->email; ?></li>
+                       <li class="list-group-item">Contraseña:<?php echo $ad->contrasena; ?></li>  
+                       </ul>
+                       <br>
+                       <form action="../administrators/logo.php" method="post"  enctype="multipart/form-data"> 
+                       <input type="hidden" name="idusuarios" value="<?php echo $idadmin; ?>">                        
+                       <div class="form-group">
+                        <label >Logotipo</label>
+                        <img src="<?php echo $ad->ruta_sitio_web; ?>" class="img-thumbnail" alt="Cinque Terre" width="200" height="300">                       
+                        <input type="file" required name="logo" class="form-control" >
+                        </div>                          
+                        <button type="submit"   class="btn btn-gradient-primary mr-2">Agregar Logo </button> 
+                       </form>
+
+                       <div class="dropdown-divider"></div>
+
+                       <form action="../administrators/contrasena.php" method="post"  >  
+                       <input type="hidden" name="idusuarios" value="<?php echo $idadmin; ?>"> 
+                       <label>Nueva Contraseña</label>
+                       <div class="form-group">
+                        <input type="password"  name="contrasena"  class="form-control form-control-lg fondo" required >
+                       </div>
+                       <label>Repirta la Contraseña</label>
+                       <div class="form-group">
+                       <input type="password"  name="contrasena2"  class="form-control form-control-lg fondo"  required>
+                      </div>
+                      <button type="submit"   class="btn btn-gradient-primary mr-2">Actualizar Contraseña </button> 
+                      </form>                    
+                      <?php } ?>
+                    
+      </div>   
+    </div>
+  </div>
+</div>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:../../partials/_sidebar.html -->

@@ -42,8 +42,8 @@ function imprimir()
 <table class="table table-striped" >
                       <thead>
                         <tr>
-                          <th>Cliente</th>
                           <th>IDPedido</th>
+                          <th>Cliente</th>                          
                           <th>Fecha de Creación</th>                          
                           <th></th>                                                                            
                         </tr>
@@ -56,10 +56,21 @@ function imprimir()
                            while($fil = $pedido->fetchObject()){   
                          ?>
                         <tr>
-                          <td><?php echo $fil->razon_social; ?></td>
-                          <td>#<?php echo $fil->idpedidos; ?></td>
-                          <td><?php echo $fil->fecha; ?></td>
-                          <td>                  
+                        <td>
+                          <ul class="list-group">
+                           <li class="list-group-item">#<?php echo $fil->idpedidos; ?></li>
+                           <li class="list-group-item">Fecha: <?php echo $fil->fecha; ?> </li>                          
+                         </ul>                        
+                          </td>
+                          <td>
+                          <ul class="list-group">
+                           <li class="list-group-item"> <?php echo $fil->razon_social; ?></li>
+                           <li class="list-group-item">Direccion: <?php echo $fil->direccion; ?> </li>
+                           <li class="list-group-item">Telefono: <?php echo $fil->telefono; ?> </li>
+                         
+                         </ul>                 
+                          </td> 
+                          <td>               
                           <table class="table">
                           <thead>
                           <b>

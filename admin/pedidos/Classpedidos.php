@@ -332,7 +332,6 @@ public function get_listapedidos_admin_id($idadmin,$idpedidos)
     }
 }
 
-
 /*********************************************************************Actualiza Status del Pedido********************************/
 
 public function set_pedidos_update_status($id, $status)

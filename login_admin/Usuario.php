@@ -36,7 +36,7 @@ class Usuario
                 $fila = $consulta->fetch();
                 $_SESSION['idusuarios'] = $fila['idusuarios'];
                 $_SESSION['email'] = $fila['email'];
-                            
+                $_SESSION['ruta_sitio_web'] = $fila['ruta_sitio_web'];                
 
                 return true;
             } else {

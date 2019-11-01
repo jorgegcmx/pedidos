@@ -1,7 +1,7 @@
 <?php
 include_once 'Classe.php';
-$usu1 = new Classe();
-$usu2 = new Classe();
+$usu1 = new Classes();
+$usu2 = new Classes();
 
 $id = null;
 $email = $_POST['email'];
@@ -18,7 +18,7 @@ if ($com == true) {
 
     if ($contrasena == $contrasena2) {
 
-        $usu1->set_usuarios($id, $email, $contrasena, date('Y-m-d'), 1,'Admin','Mexico');
+        $usu1->set_usuarios($id, $email, $contrasena, date('Y-m-d'), 1,'../../assets/images/default-logo.png','Mexico');
         $sql = $usu1->add_usuarios();
         header("Location:../../login_admin.php?ok=1");
     }else{

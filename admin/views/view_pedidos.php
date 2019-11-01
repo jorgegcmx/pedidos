@@ -14,10 +14,10 @@
                     <div class="table-responsive">
                     <table class="table table-striped" >
                       <thead>
-                        <tr>
-                          <th>Cliente</th>
+                        <tr>                          
                           <th>IDPedido</th>
-                          <th>Fecha de Creación</th>                          
+                          <th>Cliente</th>
+                                  
                           <th></th>                     
                                                                                           
                         </tr>
@@ -30,17 +30,28 @@
                            while($fil = $pedido->fetchObject()){   
                          ?>
                         <tr>
-                          <td>                         
-                          <?php echo $fil->razon_social; ?><br><br>
-                          <form action="print.php" method="POST">
+                          
+                          <td>
+                          <ul class="list-group">
+                           <li class="list-group-item">#<?php echo $fil->idpedidos; ?></li>
+                           <li class="list-group-item">Fecha: <?php echo $fil->fecha; ?> </li>                          
+                         </ul>                        
+                          </td>
+                          <td>
+                          <ul class="list-group">
+                           <li class="list-group-item"> <?php echo $fil->razon_social; ?></li>
+                           <li class="list-group-item">Direccion: <?php echo $fil->direccion; ?> </li>
+                           <li class="list-group-item">Telefono: <?php echo $fil->telefono; ?> </li>
+                           <li class="list-group-item">
+                           <form action="print.php" method="POST">
                            <input type="hidden" name="idpedido" value="<?php echo $fil->idpedidos ?>">
                            <button type="submit" class="btn btn-gradient-info btn-rounded btn-icon">
                             <i class="mdi mdi-printer"></i>
                           </button>
                            </form>
+                           </li>
+                         </ul>                 
                           </td>
-                          <td>#<?php echo $fil->idpedidos; ?></td>
-                          <td><?php echo $fil->fecha; ?></td>
                           <td>                  
                           <table class="table">
                           <thead>
