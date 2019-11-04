@@ -11,7 +11,7 @@
                    <div class="card">
                     <div class="card-body">
                     <h4 class="card-title"> Catalogo de Articulos</h4>
-                  <div class="search-field d-none d-md-block">
+                 
                     <form class="d-flex align-items-center h-100" action="." method="POST">
                         <div class="input-group">
                             <div class="input-group-prepend bg-transparent">
@@ -20,18 +20,35 @@
                             <input type="text" name="producto" class="form-control bg-transparent border-0" autofocus
                                 placeholder="Buscar Producto">
                         </div>
+                        <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Buscar</button>
                     </form>
-                   </div>
+                    
+                  
                    <div class="row product-item-wrapper">
                                         <?php 
                                           include_once '../articulos/Classe.php';	
                                           $articulos = new Classe();
+                                          
+                                          if($idadmin==2){
+                                           
+                                            if(isset($_POST['producto'])){
+                                           $articulo = $articulos->get_articulo_filtro(1,$_POST['producto']);
+                                            }else{
+                                            $articulo = $articulos->get_articulo(1);
+                                            }
+                                           
+                                           }else{
+                                               
                                           if(isset($_POST['producto'])){
                                            $articulo = $articulos->get_articulo_filtro($idadmin,$_POST['producto']);
                                           }else{
                                             $articulo = $articulos->get_articulo($idadmin);
                                           }
-                                           while($fil = $articulo->fetchObject()){   
+                                           
+                                           }
+                                          
+                                           while($fil = $articulo->fetchObject()){  
+                                               
                                          ?>
                                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 product-item">
                                             <div class="card">

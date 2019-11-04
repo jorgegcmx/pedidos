@@ -7,32 +7,33 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                            
                                 <div class="card-body">
-      
-                              <div class="search-field d-none d-md-block">
-                                 <form class="d-flex align-items-center h-100" action="." method="POST">
-                                <div class="input-group">
-                                   <div class="input-group-prepend bg-transparent">
-                                 <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                                  </div>
-                                  <input type="text" name="producto" class="form-control bg-transparent border-0" autofocus   placeholder="Buscar Producto">
-                                   </div>
-                                 </form>
-                                </div>
-
+                            <form class="d-flex align-items-center h-100" action="." method="POST">
+                            <div class="input-group">
+                            <div class="input-group-prepend bg-transparent">
+                                <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                            </div>
+                            <input type="text" name="producto" class="form-control bg-transparent border-0" autofocus
+                                placeholder="Buscar Producto">
+                           </div>
+                             <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Buscar</button>
+                            </form>
                                     <div class="row product-item-wrapper">
+                                        
                                         <?php 
                                           include_once '../articulos/Classe.php';	
                                           $articulos = new Classe();
-                                          if(isset($_POST['producto'])){
-                                           $articulo = $articulos->get_articulo_filtro($idusuario,$_POST['producto']);
+                                          
+                                        if(isset($_POST['producto'])){
+                                        $articulo = $articulos->get_articulo_filtro($idusuario,$_POST['producto']);
                                           }else{
                                             $articulo = $articulos->get_articulo($idusuario);
                                           }
+                                          
                                            while($fil = $articulo->fetchObject()){   
                                          ?>
                                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 product-item">
+                                            
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="action-holder">
@@ -54,7 +55,14 @@
                                                      <b><?php echo $fil->nombrearticulo; ?>  </b>                                                     
                                                      <li class="list-group-item d-flex justify-content-between align-items-center">
                                                        Mayoreo
-                                                       <span class="badge badge-primary badge-pill">$<?php echo $fil->precio_mayoreo; ?></span>
+                                                       <span class="badge badge-primary badge-pill">$<?php 
+                                                       if($comision != 0){
+									                           echo $fil->precio_mayoreo+($fil                        ->precio_mayoreo * $comision);   
+									                                   }else{
+									                               echo $fil->precio_mayoreo;  
+									                                   }
+									                                   ?>
+									                 </span>
                                                      </li>
                                                      <li class="list-group-item d-flex justify-content-between align-items-center">
                                                      <form action='../articulos/addcar.php' method='post' >
@@ -62,7 +70,13 @@
                                                      <input type='hidden' name='txtcategoria' value="<?php echo $fil->nombre; ?>">
                                                      <input type='hidden' name='txtimg' value="<?php echo $fil->img; ?>">
 									                                   <input type='hidden' name='txtnombre' value="<?php echo $fil->nombrearticulo; ?>">
-									                                   <input type='hidden' name='txtprecio' value="<?php echo $fil->precio_mayoreo; ?>">									                                                              
+									                                   <input type='hidden' name='txtprecio' value="<?php
+									                           if($comision != 0){
+									                           echo $fil->precio_mayoreo+($fil                        ->precio_mayoreo * $comision);   
+									                                   }else{
+									                               echo $fil->precio_mayoreo;  
+									                                   }
+									                                   ?>">									                                                              
                                                      <label>Cantidad</label>
                                                     <input  type="number" class="form-control fondo" size='5' onKeyPress='return acceptNum(event)'  required name='txtcantidad'>
                                                     <br>
@@ -115,5 +129,4 @@
                 </div>
                 <!-- page-body-wrapper ends -->
             </div>
-            
 <?php include_once 'footer.php';?>

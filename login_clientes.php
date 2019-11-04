@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>    
+    <title>Tu Catalogo</title>    
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css"> 
     <link rel="stylesheet" href="assets/css/style.css">    
@@ -31,7 +31,7 @@
                 <div class="brand-logo">
                   <img src="assets/images/logo.svg">
                 </div>
-                <h4>Productos Mayoreo</h4>
+                <h4>Bienvenido Ingresa a tu Cuenta para realizar tus pedidos</h4>
                 <h6 class="font-weight-light"></h6>
                 <?php 
                 if(isset($_GET['ok'])){
@@ -60,7 +60,7 @@
                   </div> 
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">                    
-                    <a href="registro_clientes.php" class="auth-link text-black">Crear Cuenta</a>
+                    <!--a href="registro_clientes.php" class="auth-link text-black">Crear Cuenta</a-->
                   </div>                
                 </form>
               </div>

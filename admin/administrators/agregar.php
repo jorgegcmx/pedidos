@@ -12,7 +12,7 @@ $com = $usu2->comprobar($email);
 
 if ($com == true) {
 
-    header("Location:../../index.php?ok=2");
+    header("Location:../../login_admin.php?ok=2");
 
 }else{
 
@@ -20,7 +20,7 @@ if ($com == true) {
 
         $usu1->set_usuarios($id, $email, $contrasena, date('Y-m-d'), 1,'../../assets/images/default-logo.png','Mexico');
         $sql = $usu1->add_usuarios();
-        header("Location:../../index.php?ok=1");
+        header("Location:../../login_admin.php?ok=1");
     }else{
         echo '<script type="text/javascript">
         alert(" Error! las contraseñas no conciden");

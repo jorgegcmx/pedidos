@@ -38,7 +38,7 @@ class Classe
         try
         {
             $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* FROM articulos A join categorias C on A.idcategoria=C.idcategorias
-             WHERE A.idusuarios = ? order by A.idarticulos ASC";
+             WHERE A.idusuarios = ? order by A.idarticulos desc";
             
 
             $consulta = $this->con->prepare($sql);

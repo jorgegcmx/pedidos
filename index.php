@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Tu Catalogo</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -41,8 +41,7 @@
                 </div>
                 <h4>Quieres vender a mayoreo?</h4>
                 <h6 class="font-weight-light">
-                al regristrarte podras crear tu catalogo de Articulos y compartilo con tus clientes
-                ademas prodras administrar tus pedidos de una forma facil y sencilla.
+                al registrarte podrás crear tu catálogo de artículos y compartirlo con tus clientes además podrás administrar tus pedidos de una forma fácil y sencilla.
                 </h6>
                 <form class="pt-3" action="admin/administrators/agregar.php" method="POST">
                   <div class="form-group">

@@ -6,6 +6,9 @@ if(!isset($_SESSION['idusuarios'])){
 }
 
 $idadmin=$_SESSION['idusuarios']; 
+
+
+
 $email=$_SESSION['email'];
 $ruta_sitio_web=$_SESSION['ruta_sitio_web'];
 ?>
@@ -16,7 +19,7 @@ $ruta_sitio_web=$_SESSION['ruta_sitio_web'];
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>    
+    <title>Tu Catalogo</title>    
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">    
     <link rel="stylesheet" href="../../assets/css/style.css">  
@@ -50,9 +53,9 @@ $idusuario=1;
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg"
+                <a class="navbar-brand brand-logo" href="#"><img src="../../assets/images/logo.svg"
                         alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
+                <a class="navbar-brand brand-logo-mini" href="#"><img
                         src="../../assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -65,7 +68,17 @@ $idusuario=1;
                 <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white mr-2">
                   <i class="mdi mdi-share-variant"></i>
-                </span><a class="badge badge-gradient-info" href="../catalogos/generate.php?id=<?php echo $idadmin; ?>">catalogos/<?php echo $idadmin; ?></a></h3>
+                </span>
+                <?php 
+                
+                if($idadmin==2){ ?>
+                <a class="badge badge-gradient-info" href="../catalogos/2.php">catalogos/2</a>
+                </a>
+                <?php }else{ ?>
+                <a class="badge badge-gradient-info" href="../catalogos/generate.php?id=<?php echo $idadmin; ?>">catalogos/<?php echo $idadmin; ?>
+                </a>
+                 <?php }?>
+                </h3>
              
              <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">

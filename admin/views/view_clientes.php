@@ -11,6 +11,7 @@
                     <h4 class="card-title">Clientes Mayoristas</h4>
                     <p class="card-description"><code></code>
                     </p>
+                    <div class="table-responsive">
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -44,6 +45,7 @@
                         <?php } ?>
                       </tbody>
                     </table>
+                    </div>
                   </div>
                 </div>
               </div>

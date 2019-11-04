@@ -15,7 +15,7 @@ $idusuario="'.$id.'";
 <head>    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>   
+    <title>catalogo</title>   
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
@@ -25,30 +25,26 @@ $idusuario="'.$id.'";
     <div class="container-scroller">     
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg"
+                <a class="navbar-brand brand-logo" href="#"><img src="../../assets/images/logo.svg"
                         alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
+                <a class="navbar-brand brand-logo-mini" href="#"><img
                         src="../../assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
-                <div class="search-field d-none d-md-block">
-                    <form class="d-flex align-items-center h-100" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
-                        <div class="input-group">
-                            <div class="input-group-prepend bg-transparent">
-                                <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                            </div>
-                            <input type="text" name="producto" class="form-control bg-transparent border-0" autofocus
-                                placeholder="Buscar Producto">
-                        </div>
-                    </form>
-                </div>
-                <ul class="navbar-nav navbar-nav-right">                 
+              <ul class="navbar-nav navbar-nav-right">  
+                 <li class="nav-item dropdown">
+              <a class="nav-link count-indicator"   href="#" >
+              <i class="mdi mdi-home"></i>
+               Inicio
+              <span class="count-symbol bg-success"></span>
+              </a>             
+               </li>
               <li class="nav-item dropdown">
               <a class="nav-link count-indicator"   href="../../registro_clientes.php?id=<?php echo $idusuario; ?>" >
-               Queres obterner precio Mayoreo registrate aqui! 
+               ¡Para obtener precio de Mayoreo regístrate aquí!
               <i class="mdi mdi-cart-outline"></i>
               <span class="count-symbol bg-success"></span>
               </a>             
@@ -98,6 +94,18 @@ $idusuario="'.$id.'";
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
+                                
+                            <form class="d-flex align-items-center h-100" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
+                        <div class="input-group">
+                            <div class="input-group-prepend bg-transparent">
+                                <i class="input-group-text border-0 mdi mdi-magnify"></i>
+                            </div>
+                            <input type="text"  name="producto" class="form-control bg-transparent border-0" autofocus
+                                placeholder="Buscar Producto">
+                        </div>
+                        <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Buscar</button>
+                    </form>
+              
                                 <div class="row product-item-wrapper">
                                     <?php 
                                     include_once "../articulos/Classe.php";	

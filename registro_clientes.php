@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Tu Catalogo</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -40,8 +40,7 @@
                   <img src="assets/images/logo.svg">
                 </div>
                 <h4>Quieres comprar a mayoreo?</h4>
-                <h6 class="font-weight-light">al regristrarte podras obtener los costos de mayoreo
-                    y realizar tus pedidos
+                <h6 class="font-weight-light">al registrarte podrás obtener los costos de mayoreo y realizar tus pedidos
                 </h6>
                 <form class="pt-3" action="admin/clientes/agregar.php" method="POST">
                   <div class="form-group">
