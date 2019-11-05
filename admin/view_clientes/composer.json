@@ -1,0 +1,15 @@
+{
+    "name": "administrador/chechuan",
+    "description": "Pedidos",
+    "type": "project",
+    "license": "propietary",
+    "authors": [
+        {
+            "name": "Jorge Antonio",
+            "email": "jorgegcmx@gmail.com"
+        }
+    ],
+    "require": {
+        "mercadopago/dx-php": "dev-master"
+    }
+}

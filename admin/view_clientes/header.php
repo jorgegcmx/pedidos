@@ -10,6 +10,7 @@ if($_SESSION['idusuarios_admin']==2){
    $comision=0.15;
 }else{
  $idusuario=$_SESSION['idusuarios_admin'];
+ $comision=0;
 }
 $idclientes=$_SESSION['idclientes']; 
 $email=$_SESSION['email_cliente'];

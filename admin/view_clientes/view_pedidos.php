@@ -1,4 +1,11 @@
-<?php include_once 'header.php';?>
+<?php 
+include_once 'header.php';
+
+
+
+
+?>  
+
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
@@ -22,7 +29,9 @@
                         </tr>
                       </thead>
                       <tbody>                           
-                        <?php 
+                        <?php
+                          $item=''; 
+                          $itempedidos=0;
                           include_once '../pedidos/Classpedidos.php';	
                           $pedidos = new Classpedidos();                                         
                           $pedido = $pedidos->get_listapedidos($idclientes);                             
@@ -87,7 +96,12 @@
                            <td>$<?php echo $det->subtotal; ?></td>
                          
                            </tr>
-                           <?php } ?>
+                           <?php                           
+                          } 
+                     
+                          $itempedidos=$itempedidos+1;
+                          $$item = $itempedidos;
+                          ?>
                            <tr>
                            <td colspan="3"></td>
                            <td><b>Total</b></td>
@@ -97,7 +111,10 @@
                            </table>               
                           </td>                                       
                         </tr>
+                        <tr>
+                     
                         <?php } ?>
+                      
                       </tbody>
                     </table>
                     </div>
@@ -107,4 +124,6 @@
             </div>               
           </div>                    
       </div>
+
+    
 <?php include_once 'footer.php';?>

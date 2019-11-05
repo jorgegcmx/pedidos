@@ -10,7 +10,7 @@ class Classes
     private $fecha;
     private $estatus;
     private $ruta_sitio_web;
-    private $estado;
+    private $telefono_admin;
    
 
 
@@ -19,7 +19,7 @@ class Classes
         $this->con = Conexion::singleton_conexion();
     }
 
-    public function set_usuarios($id, $email, $contrasena, $fecha, $estatus, $ruta_sitio_web, $estado)
+    public function set_usuarios($id, $email, $contrasena, $fecha, $estatus, $ruta_sitio_web, $telefono_admin)
     {
         $this->idusuarios = $id;
         $this->email = $email;
@@ -27,7 +27,7 @@ class Classes
         $this->fecha = $fecha;
         $this->estatus = $estatus;
         $this->ruta_sitio_web = $ruta_sitio_web;
-        $this->estado = $estado;        
+        $this->telefono_admin = $telefono_admin;        
 
     }
 
@@ -67,7 +67,7 @@ class Classes
                     . " fecha = ?,"
                     . " estatus = ?,"
                     . " ruta_sitio_web = ?,"
-                    . " estado = ?"                  
+                    . " telefono_admin = ?"                  
                     . " WHERE idusuarios =?";
             }
           
@@ -77,7 +77,7 @@ class Classes
             $consulta->bindparam(3, $this->fecha);
             $consulta->bindparam(4, $this->estatus);
             $consulta->bindparam(5, $this->ruta_sitio_web);
-            $consulta->bindparam(6, $this->estado);          
+            $consulta->bindparam(6, $this->telefono_admin);          
 
             if ($this->idusuarios != null) {
                 $consulta->bindparam(7, $this->idusuarios);

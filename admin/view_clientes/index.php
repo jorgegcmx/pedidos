@@ -57,12 +57,12 @@
                                                        Mayoreo
                                                        <span class="badge badge-primary badge-pill">$<?php 
                                                        if($comision != 0){
-									                           echo $fil->precio_mayoreo+($fil                        ->precio_mayoreo * $comision);   
+									                                         echo $fil->precio_mayoreo+($fil->precio_mayoreo * $comision);   
 									                                   }else{
-									                               echo $fil->precio_mayoreo;  
+									                                        echo $fil->precio_mayoreo;  
 									                                   }
 									                                   ?>
-									                 </span>
+									                                  </span>
                                                      </li>
                                                      <li class="list-group-item d-flex justify-content-between align-items-center">
                                                      <form action='../articulos/addcar.php' method='post' >

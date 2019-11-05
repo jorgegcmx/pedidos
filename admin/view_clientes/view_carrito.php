@@ -32,6 +32,7 @@ if(isset($_SESSION["carrito"])){
 			</tr>
             <?php 
              $total=0;
+             $cantArticulos=0;
              $i=0;
            foreach( $carrito as $p){
             ?>
@@ -54,7 +55,8 @@ if(isset($_SESSION["carrito"])){
 									                      </td>
                                        <?php 
 									                       $i++;
-                                        $total+=$p->subtotal;
+                                         $total+=$p->subtotal;
+                                        $cantArticulos= $cantArticulos+ $p->cantidad;
                                          ?>
                                      </tr>
                     <?php      
@@ -70,19 +72,42 @@ if(isset($_SESSION["carrito"])){
 					         </tr>
 					         <tr>
 					            <td colspan='4'>
-					 	          <form action='../pedidos/addpedidos.php' method='post'>					
+					 	          <!--form action='../pedidos/addpedidos.php' method='post'>					
 						          <div class='col-sm-10'>
                       <input type='hidden' class='form-control'value='<?php echo $idclientes; ?>' name='idcliente'>
 						          </div>										
                       <div align='right'>
 						          <input type='submit' class='btn btn-success' value='Generar Pedido'>
 						          </div> 
+                      </form-->
+                       
+                        <?php 
+                        require 'vendor/autoload.php';                         
+                        MercadoPago\SDK::setAccessToken('TEST-746453493573070-110421-edafea5b7e2fcbd452fc65f02db466b5-486125513');                                                                      
+                        $preference = new MercadoPago\Preference(); 
+                        $item = new MercadoPago\Item();
+                        $item->id = $idclientes;
+                        $item->title = date('d-m-Y'); 
+                        $item->quantity =1;
+                        $item->unit_price =  $_SESSION ["total"];                        
+                        $preference->items = array($item);                        
+                        $preference->save();                      
+                        
+                        ?>
+                         <div align='right'>
+                        <form action="../pedidos/addpedidos.php" method="POST">
+                        <input type='hidden' class='form-control'value='<?php echo $idclientes; ?>' name='idcliente'>
+                        <script
+                        src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"
+                        data-preference-id="<?php echo $preference->id; ?>">
+                        </script>
+                       </form> 
+                       </div>              
 					            </td>	
-                      </form> 
-					            </tr>
+					            </tr>                   
                       <?php 
 
-	              }else{
+	                   }else{
 		  
                    	}
 

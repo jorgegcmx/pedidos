@@ -26,15 +26,14 @@ $idusuario="1";
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
-                
-              <ul class="navbar-nav navbar-nav-right"> 
-              <li class="nav-item dropdown">
-              <a class="nav-link count-indicator"   href="https://ceramicachecuan.com/" >
+              <ul class="navbar-nav navbar-nav-right">  
+                 <li class="nav-item dropdown">
+              <a class="nav-link count-indicator"   href="#" >
               <i class="mdi mdi-home"></i>
                Inicio
               <span class="count-symbol bg-success"></span>
               </a>             
-               </li> 
+               </li>
               <li class="nav-item dropdown">
               <a class="nav-link count-indicator"   href="../../registro_clientes.php?id=<?php echo $idusuario; ?>" >
                ¡Para obtener precio de Mayoreo regístrate aquí!
@@ -83,13 +82,11 @@ $idusuario="1";
                 <div class="page-header">
                     <h3 class="page-title"> Catalogo de Articulos </h3>
                 </div>
-              
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
-                
-                
+                                
                             <form class="d-flex align-items-center h-100" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                         <div class="input-group">
                             <div class="input-group-prepend bg-transparent">
@@ -100,7 +97,7 @@ $idusuario="1";
                         </div>
                         <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Buscar</button>
                     </form>
-             
+              
                                 <div class="row product-item-wrapper">
                                     <?php 
                                     include_once "../articulos/Classe.php";	
