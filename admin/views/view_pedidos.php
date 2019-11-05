@@ -12,7 +12,7 @@
                     <p class="card-description"><code></code>
                     </p>
                     <div class="table-responsive">
-                    <table class="table table-striped" >
+                    <table class="table" >
                       <thead>
                         <tr>                          
                           <th>IDPedido</th>
@@ -88,9 +88,12 @@
                            while($det = $deta->fetchObject()){   
                            ?>
                            <tr>
-                           <td><img src="../articulos/<?php echo $det->img; ?>" 
-                                       class="img-fluid"  alt="Responsive Image" 
-                                       width="307" height="240" /></td>
+                           <td>
+                         
+                           <img src="../articulos/<?php echo $det->img; ?>" >
+                            
+                           
+                            </td>
                            <td><?php echo $det->nombre; ?><br>
                            <small><?php echo $det->comentario; ?></small>                           
                            </td>
