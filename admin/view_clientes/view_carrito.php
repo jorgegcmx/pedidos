@@ -25,7 +25,7 @@ if(isset($_SESSION["carrito"])){
 			<th>Img</th>
 			<th>Nombre</th>
 			<th>Cantidad</th>
-      <th>UniCost</th>
+      <th>Costo Unitario</th>
 			<th>Subtotal</th>
       <th>Comentario</th>
 			<th></th>
@@ -65,13 +65,15 @@ if(isset($_SESSION["carrito"])){
                		<tr>
 					         <td colspan='3'></td>
                    <td ><b><h2>Total:</h2></b></td>
-					         <td><b><h2>$ <?php echo $total; ?></h2></b></td>                   
+					         <td><b><h2>$ <?php echo $total; ?></h2></b></td>   
+                   <td></td>
+                   <td></td>                      
                     <?php 
                     $_SESSION ["total"]=$total;
                     ?>
 					         </tr>
 					         <tr>
-					            <td colspan='4'>
+					            <td colspan='7'>
 					 	          <!--form action='../pedidos/addpedidos.php' method='post'>					
 						          <div class='col-sm-10'>
                       <input type='hidden' class='form-control'value='<?php echo $idclientes; ?>' name='idcliente'>

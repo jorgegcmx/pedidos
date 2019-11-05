@@ -111,8 +111,7 @@ include_once 'header.php';
                            </table>               
                           </td>                                       
                         </tr>
-                        <tr>
-                     
+                        <tr>                     
                         <?php } ?>
                       
                       </tbody>
