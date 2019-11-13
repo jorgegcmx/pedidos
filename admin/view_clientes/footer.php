@@ -34,12 +34,12 @@
                     <div class="form-group">
                         <label for="exampleInputPassword4">Precio Mayoreo</label>
                         <input type="number" name="precio_mayoreo" class="form-control"
-                            id="exampleInputPassword4" placeholder="$" required>
+                            placeholder="$" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword4">Precio Menudeo</label>
                         <input type="number" name="precio_menudeo" class="form-control"
-                            id="exampleInputPassword4" placeholder="$" required>
+                            placeholder="$" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleSelectGender">Categoria</label>

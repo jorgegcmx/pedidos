@@ -36,7 +36,7 @@ $idusuario="1";
                </li>
               <li class="nav-item dropdown">
               <a class="nav-link count-indicator"   href="../../registro_clientes.php?id=<?php echo $idusuario; ?>" >
-               ¡Para obtener precio de Mayoreo regístrate aquí!
+               ¡Para obtener precio de mayoreo regístrate aquí!
               <i class="mdi mdi-cart-outline"></i>
               <span class="count-symbol bg-success"></span>
               </a>             

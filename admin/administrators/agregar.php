@@ -7,7 +7,7 @@ $id = null;
 $email = $_POST['email'];
 $contrasena = $_POST['contrasena'];
 $contrasena2 = $_POST['contrasena2'];
-
+$telefono=$_POST['telefono'];
 $com = $usu2->comprobar($email);
 
 if ($com == true) {
@@ -18,7 +18,7 @@ if ($com == true) {
 
     if ($contrasena == $contrasena2) {
 
-        $usu1->set_usuarios($id, $email, $contrasena, date('Y-m-d'), 1,'../../assets/images/default-logo.png','Mexico');
+        $usu1->set_usuarios($id, $email, $contrasena, date('Y-m-d'), 1,'../../assets/images/default-logo.png',$telefono);
         $sql = $usu1->add_usuarios();
         header("Location:../../login_admin.php?ok=1");
     }else{

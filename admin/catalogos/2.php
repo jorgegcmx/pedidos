@@ -36,11 +36,18 @@ $idusuario="1";
                </li> 
               <li class="nav-item dropdown">
               <a class="nav-link count-indicator"   href="../../registro_clientes.php?id=2" >
-               ¡Para obtener precio de Mayoreo regístrate aquí!
+               ¡Para obtener precio de mayoreo regístrate aquí!
               <i class="mdi mdi-cart-outline"></i>
               <span class="count-symbol bg-success"></span>
               </a>             
-               </li>                 
+               </li>
+                <li class="nav-item dropdown">
+              <a class="nav-link count-indicator"   href="http://tucatalogoweb.com/login_clientes.php" >
+              <i class="mdi mdi-account-key"></i>
+               Ingresar
+              <span class="count-symbol bg-success"></span>
+              </a>             
+               </li>
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
                     data-toggle="offcanvas">
