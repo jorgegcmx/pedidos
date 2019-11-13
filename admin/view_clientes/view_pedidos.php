@@ -16,7 +16,10 @@ include_once 'header.php';
                    <div class="card">
                     <div class="card-body">
                     <h4 class="card-title">Pedidos</h4>
-                    <p class="card-description"><code></code>
+                    <p class="card-description">
+                        <div class="alert alert-primary" role="alert">
+Para realizar el pago de los pedidos debe contactarse con ventas al <b><?php echo $contacto; ?></b> , de esta forma verificaran su pedido y le proporcionará los datos para que realice el pago y de la misma manera el método de envió.
+</div>
                     </p>
                     <div class="table-responsive">
                     <table class="table table-striped" >

@@ -65,17 +65,24 @@ $idusuario=1;
                 </button>
                
                 <ul class="navbar-nav navbar-nav-right">
+                   <h3 class="page-title">
+                     <?php 
+                if($idadmin==2){ ?>
+                <a href="http://www.facebook.com/sharer/sharer.php?u=http://tucatalogoweb.com/admin/catalogos/2.php">
                
-                <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white mr-2">
                   <i class="mdi mdi-share-variant"></i>
                 </span>
-                <?php 
-                
-                if($idadmin==2){ ?>
+                </a>
                 <a class="badge badge-gradient-info" href="../catalogos/2.php">catalogos/2</a>
                 </a>
                 <?php }else{ ?>
+                 <a href="http://www.facebook.com/sharer/sharer.php?u=http://tucatalogoweb.com/admin/catalogos/<?php echo $idadmin; ?>.php">
+         
+                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                  <i class="mdi mdi-share-variant"></i>
+                </span>
+                </a>
                 <a class="badge badge-gradient-info" href="../catalogos/generate.php?id=<?php echo $idadmin; ?>">catalogos/<?php echo $idadmin; ?>
                 </a>
                  <?php }?>

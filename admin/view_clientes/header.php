@@ -14,6 +14,7 @@ if($_SESSION['idusuarios_admin']==2){
 }
 $idclientes=$_SESSION['idclientes']; 
 $email=$_SESSION['email_cliente'];
+$contacto=$_SESSION['telefono_admin'];
 ?>
 <!DOCTYPE html>
 <html lang="es">

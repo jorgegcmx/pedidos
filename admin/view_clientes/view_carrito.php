@@ -74,15 +74,15 @@ if(isset($_SESSION["carrito"])){
 					         </tr>
 					         <tr>
 					            <td colspan='7'>
-					 	          <!--form action='../pedidos/addpedidos.php' method='post'>					
-						          <div class='col-sm-10'>
+					   <form action='../pedidos/addpedidos.php' method='post'>					
+					  <div class='col-sm-10'>
                       <input type='hidden' class='form-control'value='<?php echo $idclientes; ?>' name='idcliente'>
 						          </div>										
                       <div align='right'>
 						          <input type='submit' class='btn btn-success' value='Generar Pedido'>
 						          </div> 
-                      </form-->
-                       
+                      </form>
+                       <!--
                         <?php 
                         require 'vendor/autoload.php';                         
                         MercadoPago\SDK::setAccessToken('TEST-746453493573070-110421-edafea5b7e2fcbd452fc65f02db466b5-486125513');                                                                      
@@ -103,10 +103,10 @@ if(isset($_SESSION["carrito"])){
                         src="https://www.mercadopago.com.mx/integrations/v1/web-payment-checkout.js"
                         data-preference-id="<?php echo $preference->id; ?>">
                         </script>
-                       </form> 
+                       </form--> 
                        </div>              
-					            </td>	
-					            </tr>                   
+					    </td>	
+					    </tr>                   
                       <?php 
 
 	                   }else{
@@ -115,6 +115,9 @@ if(isset($_SESSION["carrito"])){
 
                     ?>
                   </table>
+<div class="alert alert-primary" role="alert">
+Para realizar el pago de los pedidos debe contactarse con ventas al <b><?php echo $contacto; ?></b> , de esta forma verificaran su pedido y le proporcionará los datos para que realice el pago y de la misma manera el método de envió.
+</div>
                   </div>
                   </div>
                 </div>

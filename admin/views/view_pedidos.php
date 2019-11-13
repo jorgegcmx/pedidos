@@ -62,6 +62,10 @@
                           <th>Cantidad</th>
                           <th>UniCost</th>
                           <th>
+                           <a  id="confirmacion" href="../pedidos/delete.php?id=<?php echo $fil->idpedidos ?>"
+                           class="badge badge-gradient-danger">
+                          <i class="mdi mdi-close"></i>
+                          </a>   
                           <?php 
                           if($fil->status=='PD'){
                             echo "<label class='badge badge-warning'>Pendiente de Pago</label>"; 
