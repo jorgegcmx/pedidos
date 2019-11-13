@@ -34,6 +34,30 @@
       <div class="container-fluid page-body-wrapper full-page-wrapper">
         <div class="content-wrapper d-flex align-items-center auth">
           <div class="row flex-grow">
+               <div class="col-lg-6mx-auto"> <div class="auth-form-light text-left p-5">
+           <div class="container"> 
+           <h3>Muestra a Tus clientes Tu Catalogo Virtual</h3> 
+             <p> 
+             Una Herramienta muy fácil de usar, además podrás administrar tus pedidos de una forma fácil y sencilla.  
+            </p> 
+             <img src='undraw_add_to_cart_vkjp.svg' alt="Catalogo web"
+             class="img-fluid"  alt="Responsive Image" 
+             width="307" height="240" /> 
+             <img src='undraw_wallet_aym5.svg' alt="Catalogo web"
+             class="img-fluid"  alt="Responsive Image" 
+             width="307" height="240" /> 
+              </div> 
+              <div class="container">
+              <img src='undraw_Savings_dwkw.svg' alt="Catalogo web"
+             class="img-fluid"  alt="Responsive Image" 
+             width="307" height="240" />
+              <img src='undraw_finance_0bdk.svg' alt="Catalogo web"
+             class="img-fluid"  alt="Responsive Image" 
+             width="307" height="240" />
+             </div> 
+            </div>
+          </div>
+	       <!-- https://undraw.co/search -->
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
@@ -41,7 +65,7 @@
                 </div>
                 <h4>Quieres vender a mayoreo?</h4>
                 <h6 class="font-weight-light">
-                al registrarte podrás crear tu catálogo de artículos y compartirlo con tus clientes además podrás administrar tus pedidos de una forma fácil y sencilla.
+                al registrarte podrás crear tu catálogo de artículos y compartirlo con tus clientes. 
                 </h6>
                 <form class="pt-3" action="admin/administrators/agregar.php" method="POST">
                   <div class="form-group">
@@ -52,7 +76,10 @@
                     </div>
                   <div class="form-group">
                     <input type="password"  name="contrasena2"  class="form-control form-control-lg fondo" placeholder="Repirte la contraseña" required>
-                  </div>                             
+                  </div> 
+                   <div class="form-group">
+                    <input type="number"  name="telefono"  class="form-control form-control-lg fondo" placeholder="tel contacto" required>
+                  </div> 
                   <div class="mb-4">                  
                   </div>
                   <div class="mt-3">
@@ -63,7 +90,7 @@
                 </form>
               </div>
             </div>
-          </div>
+          
         </div>      
       </div>     
     </div>   
