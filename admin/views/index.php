@@ -21,8 +21,7 @@
                                 placeholder="Buscar Producto">
                         </div>
                         <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Buscar</button>
-                    </form>
-                    
+                    </form>                    
                   
                    <div class="row product-item-wrapper">
                                         <?php 
@@ -32,9 +31,9 @@
                                           if($idadmin==2){
                                            
                                             if(isset($_POST['producto'])){
-                                           $articulo = $articulos->get_articulo_filtro(1,$_POST['producto']);
+                                           $articulo = $articulos->get_articulo_filtro($idadmin,$_POST['producto']);
                                             }else{
-                                            $articulo = $articulos->get_articulo(1);
+                                            $articulo = $articulos->get_articulo($idadmin);
                                             }
                                            
                                            }else{

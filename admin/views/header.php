@@ -68,8 +68,7 @@ $idusuario=1;
                    <h3 class="page-title">
                      <?php 
                 if($idadmin==2){ ?>
-                <a href="http://www.facebook.com/sharer/sharer.php?u=http://tucatalogoweb.com/admin/catalogos/2.php">
-               
+                <a href="http://www.facebook.com/sharer/sharer.php?u=http://tucatalogoweb.com/admin/catalogos/2.php">               
                 <span class="page-title-icon bg-gradient-primary text-white mr-2">
                   <i class="mdi mdi-share-variant"></i>
                 </span>

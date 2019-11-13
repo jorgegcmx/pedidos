@@ -30,7 +30,7 @@ if (isset($_POST['id'])) {
                 $descripcion = $_POST['descripcion'];
                 $idusuarios = $_POST['idusuarios'];
 
-                $destino = "imagenes/" . $idusuarios . 'chuan01' . $cadenaf = str_replace(' ', '', $nombre_img);
+                $destino = "imagenes/" . $idusuarios ."". date('H-i-s') ."". $cadenaf = str_replace(' ', '', $nombre_img);
 
                 if ($nombre_img != "") {
                     if (copy($ruta, $destino)) {
@@ -108,7 +108,7 @@ if (isset($_POST['id'])) {
         $descripcion = $_POST['descripcion'];
         $idusuarios = $_POST['idusuarios'];
 
-        $destino = "imagenes/" . $idusuarios . 'chuan01' . $cadenaf = str_replace(' ', '', $nombre_img);
+        $destino = "imagenes/" . $idusuarios ."". date('H-i-s') ."". $cadenaf = str_replace(' ', '', $nombre_img);
 
         if ($nombre_img != "") {
         if (copy($ruta, $destino)) {

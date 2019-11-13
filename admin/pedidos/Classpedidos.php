@@ -365,4 +365,17 @@ public function add_pedidos_update_status()
         print "Error:" . $e->getMessage();
     }
 }
+
+public function del_pedidos($id)
+{
+    try {
+        $sql = "DELETE FROM pedidos WHERE idpedidos = ?";
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindParam(1, $id);
+        $consulta->execute();
+        $this->con = null;
+    } catch (PDOException $e) {
+        print "Error: " . $e->getMessage();
+    }
+}
 } //fin de la clase

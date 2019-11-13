@@ -62,7 +62,7 @@
                           <th>Cantidad</th>
                           <th>UniCost</th>
                           <th>
-                           <a  id="confirmacion" href="../pedidos/delete.php?id=<?php echo $fil->idpedidos ?>"
+                           <a  id="confirmacion" href="../pedidos/borrar.php?id=<?php echo $fil->idpedidos ?>"
                            class="badge badge-gradient-danger">
                           <i class="mdi mdi-close"></i>
                           </a>   

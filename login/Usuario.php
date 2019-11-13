@@ -37,7 +37,8 @@ class Usuario
                 $fila = $consulta->fetch();
                 $_SESSION['idclientes'] = $fila['idclientes'];
                 $_SESSION['email_cliente'] = $fila['email_cliente'];
-                $_SESSION['idusuarios_admin'] = $fila['idusuarios_admin'];             
+                $_SESSION['idusuarios_admin'] = $fila['idusuarios_admin'];
+                $_SESSION['telefono_admin'] = $fila['telefono_admin'];              
 
                 return true;
             } else {
