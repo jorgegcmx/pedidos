@@ -6,7 +6,8 @@ if(!isset($_SESSION['idclientes'])){
  
   
 if($_SESSION['idusuarios_admin']==2){
-   $idusuario=1;
+   $idusuario=2;
+   $idasociado=1;
    $comision=0.15;
 }else{
  $idusuario=$_SESSION['idusuarios_admin'];

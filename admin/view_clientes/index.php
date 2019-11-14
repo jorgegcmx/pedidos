@@ -23,13 +23,21 @@
                                         <?php 
                                           include_once '../articulos/Classe.php';	
                                           $articulos = new Classe();
+
+                                        if($idusuario==2){
+                                          if(isset($_POST['producto'])){
+                                            $articulo = $articulos->get_articulo_filtro_CHRISXEL($idusuario, $idasociado,$_POST['producto']);
+                                              }else{
+                                                $articulo = $articulos->get_articulo_CHRISXEL($idusuario,$idasociado);
+                                              } 
+                                         }else{
                                           
                                         if(isset($_POST['producto'])){
                                         $articulo = $articulos->get_articulo_filtro($idusuario,$_POST['producto']);
                                           }else{
                                             $articulo = $articulos->get_articulo($idusuario);
-                                          }
-                                          
+                                          } 
+                                        }                                         
                                            while($fil = $articulo->fetchObject()){   
                                          ?>
                                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 product-item">
@@ -43,7 +51,7 @@
                                                     </div>
                                                     <div class="product-img-outer">
                                                       <a href="#"   data-toggle="modal" data-target="#img<?php echo $fil->idarticulos; ?>" >
-                                                        <img width="300" height="400" class="img-fluid"
+                                                        <img width="300px" height="300px" class="img-thumbnail"
                                                             src="../articulos/<?php echo $fil->img; ?>"
                                                             alt="prduct image">
                                                       </a>
@@ -71,10 +79,10 @@
                                                      <input type='hidden' name='txtimg' value="<?php echo $fil->img; ?>">
 									                                   <input type='hidden' name='txtnombre' value="<?php echo $fil->nombrearticulo; ?>">
 									                                   <input type='hidden' name='txtprecio' value="<?php
-									                           if($comision != 0){
-									                           echo $fil->precio_mayoreo+($fil                        ->precio_mayoreo * $comision);   
+									                                 if($comision != 0){
+									                                echo $fil->precio_mayoreo+($fil                        ->precio_mayoreo * $comision);   
 									                                   }else{
-									                               echo $fil->precio_mayoreo;  
+									                                echo $fil->precio_mayoreo;  
 									                                   }
 									                                   ?>">									                                                              
                                                      <label>Cantidad</label>

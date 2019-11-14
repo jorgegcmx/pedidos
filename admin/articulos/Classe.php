@@ -38,7 +38,7 @@ class Classe
         try
         {
             $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* FROM articulos A join categorias C on A.idcategoria=C.idcategorias
-             WHERE A.idusuarios = ? order by A.idarticulos desc";
+             WHERE A.idusuarios = ? AND img<>'' ";
             
 
             $consulta = $this->con->prepare($sql);
@@ -64,7 +64,7 @@ class Classe
         {
             $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* 
                     FROM articulos A join categorias C on A.idcategoria=C.idcategorias
-                    WHERE A.idusuarios = ? AND A.nombre like '%$nombre%'
+                    WHERE A.idusuarios = ? AND A.nombre like '%$nombre%' AND img<>''
                     ";
 
 
@@ -195,7 +195,7 @@ public function get_articulo_CHRISXEL($idusuarios,$asociado)
     try
     {
         $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* FROM articulos A join categorias C on A.idcategoria=C.idcategorias
-         WHERE A.idusuarios in($idusuarios,$asociado) AND img<>'' order by A.idarticulos desc";
+         WHERE A.idusuarios in($idusuarios,$asociado) AND img<>'' ";
         
 
         $consulta = $this->con->prepare($sql);
