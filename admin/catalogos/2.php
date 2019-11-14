@@ -1,6 +1,7 @@
 
 <?php
-$idusuario="1";
+$idusuario="2";
+$idasociado="1";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -71,7 +72,7 @@ $idusuario="1";
                <?php 
                 include_once "../articulos/Classe.php";	
                 $categorias = new Classe();                                    
-                $categori = $categorias->get_categorias($idusuario);                                     
+                $categori = $categorias->get_categorias_CHRISXEL($idusuario,$idasociado);                                     
                 while($fil = $categori->fetchObject()){   
                 ?>
                <li class="nav-item">
@@ -82,7 +83,7 @@ $idusuario="1";
                </li>
                 <?php } ?>                    
            </ul>
-       </nav>
+          </nav>
             <!-- partial -->
             <div class="main-panel">
             <div class="content-wrapper">
@@ -95,26 +96,26 @@ $idusuario="1";
                             <div class="card-body">
                                 
                             <form class="d-flex align-items-center h-100" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
-                        <div class="input-group">
+                             <div class="input-group">
                             <div class="input-group-prepend bg-transparent">
                                 <i class="input-group-text border-0 mdi mdi-magnify"></i>
                             </div>
                             <input type="text"  name="producto" class="form-control bg-transparent border-0" autofocus
                                 placeholder="Buscar Producto">
-                        </div>
-                        <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Buscar</button>
-                    </form>
+                              </div>
+                          <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Buscar</button>
+                       </form>
               
                                 <div class="row product-item-wrapper">
                                     <?php 
                                     include_once "../articulos/Classe.php";	
                                     $articulos = new Classe();
                                     if(isset($_POST["producto"])){
-                                     $articulo = $articulos->get_articulo_filtro($idusuario,$_POST["producto"]);
+                                     $articulo = $articulos->get_articulo_filtro_CHRISXEL($idusuario,$idasociado,$_POST["producto"]);
                                     }elseif(isset($_GET["id"])){
-                                      $articulo = $articulos->get_categorias_filtro($idusuario,$_GET["id"]);
+                                      $articulo = $articulos->get_categorias_filtro_CHRISXEL($_GET["id"]);
                                     }else{
-                                      $articulo = $articulos->get_articulo($idusuario);
+                                      $articulo = $articulos->get_articulo_CHRISXEL($idusuario,$idasociado);
                                     }
                                      while($fil = $articulo->fetchObject()){   
                                      ?>

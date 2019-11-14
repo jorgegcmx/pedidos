@@ -70,7 +70,7 @@ class Classe
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idusuarios);
-           // $consulta->bindParam(2, $nombre);
+           //$consulta->bindParam(2, $nombre);
           
             $consulta->execute();
             $this->con = null;
@@ -188,5 +188,106 @@ class Classe
             print "Error:" . $e->getmessage();
         }
     }
+
+/*******************************************Funciones solo Chrisxel */
+public function get_articulo_CHRISXEL($idusuarios,$asociado)
+{
+    try
+    {
+        $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* FROM articulos A join categorias C on A.idcategoria=C.idcategorias
+         WHERE A.idusuarios in($idusuarios,$asociado) AND img<>'' order by A.idarticulos desc";
+        
+
+        $consulta = $this->con->prepare($sql);
+        if ($idusuarios != null) {
+            $consulta->bindParam(1, $idusuarios);
+        }
+        $consulta->execute();
+        $this->con = null;
+
+        if ($consulta->rowCount() > 0) {
+            return $consulta;
+        } else {
+            return $consulta;
+        } //fin else
+    } catch (PDOExeption $e) {
+        print "Error:" . $e->getmessage();
+    }
+}
+
+public function get_articulo_filtro_CHRISXEL($idusuarios,$asociado,$nombre)
+{
+    try
+    {
+        $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* 
+                FROM articulos A join categorias C on A.idcategoria=C.idcategorias
+                WHERE A.idusuarios in($idusuarios,$asociado) AND A.nombre like '%$nombre%' AND img<>''
+                ";
+
+
+        $consulta = $this->con->prepare($sql);
+        $consulta->bindParam(1, $idusuarios);
+       //$consulta->bindParam(2, $nombre);
+      
+        $consulta->execute();
+        $this->con = null;
+
+        if ($consulta->rowCount() > 0) {
+            return $consulta;
+        } else {
+            return $consulta;
+        } //fin else
+    } catch (PDOExeption $e) {
+        print "Error:" . $e->getmessage();
+    }
+}
+
+public function get_categorias_CHRISXEL($idusuarios,$asociado)
+    {
+        try
+        {
+            $sql = "SELECT * FROM categorias WHERE idusuarios in($idusuarios,$asociado)";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idusuarios);
+
+            $consulta->execute();
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            }
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
+
+    public function get_categorias_filtro_CHRISXEL($idcategoria)
+    {
+        try
+        {
+            $sql = "SELECT A.nombre as nombrearticulo,A.*,C.* 
+                    FROM articulos A join categorias C on A.idcategoria=C.idcategorias
+                    WHERE A.idusuarios in(2,1) AND C.idcategorias = ? AND img<>'' ";
+
+
+            $consulta = $this->con->prepare($sql);                    
+            $consulta->bindParam(1, $idcategoria);          
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
+
+/*******************************************FIN*******************************************************/
+
 
 } //cierra clase
