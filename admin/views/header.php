@@ -41,7 +41,9 @@ max-width: 100%; } }
 
 .carousel-multi-item-2 .card img {
 border-radius: 2px; }
-
+tr.border_bottom td {
+  border-bottom:1pt solid black;
+}
 </style>
 
 </head>

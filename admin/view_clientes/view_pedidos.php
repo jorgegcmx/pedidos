@@ -78,8 +78,7 @@ Para realizar el pago de los pedidos debe contactarse con ventas al <b><?php ech
                           <br>
                           Subtotal                          
                           </th>                         
-                          </tr>
-                       
+                          </tr>                       
                           </thead>
                           <tbody>
                           <?php 

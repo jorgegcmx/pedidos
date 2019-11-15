@@ -109,6 +109,7 @@
                            <td colspan="3"></td>
                            <td><b>Total</b></td>
                            <td><b>$<?php echo $fil->total; ?></b></td>
+                           <td></td>
                            </tr>
                            </tbody>
                            </table>               

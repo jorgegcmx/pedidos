@@ -61,7 +61,7 @@ class Classpedidos
     {
         try
         {
-            $sql = "SELECT max(idpedidos) as id FROM pedidos where idcliente =? ";
+            $sql = "SELECT max(idpedidos) as id FROM pedidos where idcliente =?  ";
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idcliente);
@@ -81,7 +81,7 @@ class Classpedidos
     {
         try
         {
-            $sql = "SELECT * FROM pedidos WHERE idcliente =? and status<>'RC' order by idpedidos DESC";
+            $sql = "SELECT * FROM pedidos WHERE idcliente =? and status<>'RC' order by idpedidos desc";
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idcliente);
@@ -262,7 +262,7 @@ class Classpedidos
         try
         {
             $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
-                WHERE idusuarios_admin =? and status<>'RC' order by fecha DESC";
+                WHERE idusuarios_admin =? and status<>'RC' order by idpedidos desc";
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idadmin);
@@ -285,7 +285,7 @@ class Classpedidos
         try
         {
             $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
-                WHERE idusuarios_admin =? and status='RC' order by fecha DESC";
+                WHERE idusuarios_admin =? and status='RC' order by idpedidos desc";
 
             $consulta = $this->con->prepare($sql);
             $consulta->bindParam(1, $idadmin);
@@ -302,7 +302,7 @@ class Classpedidos
             print "Error:" . $e->getmessage();
         }
     }
-/**********************************FUNCION DONDE MUSTRA LOS PEDIDOS A USUARIO ADMINISTRADOR IMPRIMIR*************/
+/**********************************FUNCION DONDE MUESTRA LOS PEDIDOS A USUARIO ADMINISTRADOR IMPRIMIR*************/
     public function get_listapedidos_admin_id($idadmin, $idpedidos)
     {
         try
