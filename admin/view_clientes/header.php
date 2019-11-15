@@ -117,9 +117,13 @@ $contacto=$_SESSION['telefono_admin'];
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
-               
-                 
-               
+                <?php
+                if(isset($_SESSION["tipo"])!=''){
+                  echo "<p class='btn btn-danger'><small> Solicitando ".$_SESSION["tipo"]."</small> Importe de $".$_SESSION["importe"]."</p>";                                       
+                  }else{
+                                        
+                 }                  
+               ?>
               <ul class="navbar-nav navbar-nav-right">                 
               <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="view_carrito.php" >
@@ -179,7 +183,7 @@ $contacto=$_SESSION['telefono_admin'];
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="view_pedidos_completados.php">
-                       <span class="menu-title">Pedidos Completados</span>
+                       <span class="menu-title">Completados</span>
                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     </a>
                     </li>

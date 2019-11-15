@@ -38,7 +38,7 @@ class Classe
     {
         try
         {
-            $sql = "SELECT * FROM cambios 
+            $sql = "SELECT *,cambios.status as sta FROM cambios 
             inner join pedidos
             on pedidos.idpedidos=cambios.pedido_id
             inner join articulos

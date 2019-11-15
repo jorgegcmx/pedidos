@@ -81,7 +81,9 @@ function imprimir()
                            while($det = $deta->fetchObject()){   
                            ?>
                            <tr>
-                           <td></td>
+                           <td><img src="../articulos/<?php echo $det->img; ?>" 
+                                        alt="Responsive Image" 
+                                       width="307px" height="240px" /> </td>
                            <td><?php echo $det->nombre; ?>
                            <br>
                            <small><?php echo $det->comentario; ?></small> 

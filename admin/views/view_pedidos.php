@@ -75,7 +75,9 @@
                             echo "<label class='badge badge-primary'>En proceso de Envio</label>"; 
                           } elseif($fil->status=='RC'){
                             echo "<label class='badge badge-success'>Recibido por Cliente</label>"; 
-                          }                            
+                          }elseif($fil->status=='CM'){
+                            echo "<label class='badge badge-danger'>Solicitud de Cambio</label>"; 
+                          }                              
                           ?> 
                           <a data-toggle="modal" data-target="#exampleModal<?php echo $fil->idpedidos ?>" class="badge badge-gradient-info">
                           <i class="mdi mdi-border-color"></i>

@@ -376,12 +376,12 @@ class Classpedidos
 
 /**************************cambios */
     private $pedido_id;
-    private $status_s;
 
-    public function set_pedidos_update_status_cambio($id, $status_s, $iddetalle)
+    public function set_pedidos_update_status_cambio($id, $iddetalle, $status)
     {
         $this->pedido_id = $id;
-        $this->status = $status_s;
+        $this->iddetalle = $iddetalle;
+        $this->status = $status;
 
     }
     public function add_pedidos_update_cambio()
@@ -390,14 +390,14 @@ class Classpedidos
             if ($this->pedido_id != null) {
 
                 $sql = "UPDATE cambios"
-                    . " SET status = ?,"
-                    . " iddetalle = ?"
+                    . " SET iddetalle = ?,"
+                    . " status  = ?"
                     . " WHERE pedido_id =?";
             }
 
             $consulta = $this->con->prepare($sql);
-            $consulta->bindparam(1, $this->status);
-            $consulta->bindparam(2, $this->iddetalle);
+            $consulta->bindparam(1, $this->iddetalle);
+            $consulta->bindparam(2, $this->status);
 
             if ($this->pedido_id != null) {
                 $consulta->bindparam(3, $this->pedido_id);
@@ -415,7 +415,7 @@ class Classpedidos
     {
         try
         {
-            $sql = "SELECT * FROM cambios 
+            $sql = "SELECT * FROM cambios
             inner join pedidos
             on pedidos.idpedidos=cambios.pedido_id
             inner join articulos

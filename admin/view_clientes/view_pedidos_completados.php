@@ -12,7 +12,7 @@
                     <p class="card-description"><code></code>
                     </p>
                     <div class="table-responsive">
-                    <table class="table table-striped" >
+                    <table class="table table-striped"  >
                       <thead>
                         <tr>
                           <th>IDPedido</th>
@@ -40,7 +40,7 @@
                           <td><?php echo $fil->fecha; ?></td>
                           <td>
                   
-                          <table class="table">
+                          <table class="table" border="5">
                           <thead>
                           <b>
                           <tr>

@@ -50,9 +50,9 @@ Para realizar el pago de los pedidos debe contactarse con ventas al <b><?php ech
                            </form>
                           </td>
                           <td><?php echo $fil->fecha; ?></td>
-                          <td>
+                          <td >
                   
-                          <table class="table">
+                          <table class="table" >
                           <thead>
                           <b>
                           <tr>

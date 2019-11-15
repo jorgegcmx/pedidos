@@ -31,18 +31,17 @@ while ($data = $dato->fetchObject()) {
 }
 $ultimo;
 
-if (isset($_POST["cambio"])){
+if (isset($_POST["cambio"])) {
 
     include_once 'Classpedidos.php';
     $cam = new Classpedidos();
-    $idpedidos = $_POST["idpedidos"];
-    $status_cambio = 2;
-    $id_nuevo_pedido=$ultimo;
-    $cam->set_pedidos_update_status_cambio($idpedidos, $status_cambio,$id_nuevo_pedido);
+    echo $idpedidos = $_POST["idpedidos"];
+    echo $status_cambio = 2;
+    echo $id_nuevo_pedido = $ultimo;
+    $cam->set_pedidos_update_status_cambio($idpedidos, $id_nuevo_pedido, $status_cambio);
     $sql = $cam->add_pedidos_update_cambio();
 
 }
-
 
 $carrito = $_SESSION["carrito"];
 $lista = $carrito;

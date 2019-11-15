@@ -23,7 +23,7 @@ if($cantidad_original<$cantidad){
     $iddetalle =$_POST['iddetalle'];
     $unicost =$_POST['unicost'];
     $cambio_subtotal =$cantidad*$unicost;
-    $status =1;
+    $status =0;
     
     $usu1->set_cambio($idcambios, $pedido_id, $articulo_id, $iddetalle, $cantidad, $unicost, $cambio_subtotal, $status);
     $sql = $usu1->add_cambio();
