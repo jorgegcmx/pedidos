@@ -119,13 +119,12 @@ class Classpedidos
             print "Error:" . $e->getmessage();
         }
     }
-    
 
     public function get_detalle_pedido($idpedido)
     {
         try
         {
-            $sql = "SELECT * FROM detalle_pedidos inner join articulos on articulos.idarticulos=detalle_pedidos.idarticulo 
+            $sql = "SELECT * FROM detalle_pedidos inner join articulos on articulos.idarticulos=detalle_pedidos.idarticulo
             WHERE idpedido =? ";
 
             $consulta = $this->con->prepare($sql);
@@ -144,12 +143,11 @@ class Classpedidos
         }
     }
 
-
-    public function get_listapedidos_print($idcliente,$idpedidos)
+    public function get_listapedidos_print($idcliente, $idpedidos)
     {
         try
         {
-            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente            
+            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
                     WHERE idcliente =? and idpedidos=? ";
 
             $consulta = $this->con->prepare($sql);
@@ -168,9 +166,6 @@ class Classpedidos
             print "Error:" . $e->getmessage();
         }
     }
-
-
-
 
     public function get_print($id)
     {
@@ -222,7 +217,7 @@ class Classpedidos
     }
 
     /*********************************************************************DESTALLE PEDIDOS********************************/
-    public function set_detalle_pedidos($id, $idarticulo, $cantidad, $subtotal, $costouni, $idpedido,$comentario)
+    public function set_detalle_pedidos($id, $idarticulo, $cantidad, $subtotal, $costouni, $idpedido, $comentario)
     {
         $this->iddetalle_pedidos = $id;
         $this->idarticulo = $idarticulo;
@@ -262,120 +257,183 @@ class Classpedidos
 
 /*********************************************************************CIERRE DESTALLE PEDIDOS********************************/
 /**********************************FUNCION DONDE MUESTRA LOS PEDIDOS A USUARIO ADMINISTRADOR*************/
-public function get_listapedidos_admin($idadmin)
-{
-    try
+    public function get_listapedidos_admin($idadmin)
     {
-        $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente        
+        try
+        {
+            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
                 WHERE idusuarios_admin =? and status<>'RC' order by fecha DESC";
 
-        $consulta = $this->con->prepare($sql);
-        $consulta->bindParam(1, $idadmin);
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idadmin);
 
-        $consulta->execute();
-        $this->con = null;
+            $consulta->execute();
+            $this->con = null;
 
-        if ($consulta->rowCount() > 0) {
-            return $consulta;
-        } else {
-            return $consulta;
-        } //fin else
-    } catch (PDOExeption $e) {
-        print "Error:" . $e->getmessage();
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
     }
-}
 
-public function get_listapedidos_admin_complatados($idadmin)
-{
-    try
+    public function get_listapedidos_admin_complatados($idadmin)
     {
-        $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente        
+        try
+        {
+            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
                 WHERE idusuarios_admin =? and status='RC' order by fecha DESC";
 
-        $consulta = $this->con->prepare($sql);
-        $consulta->bindParam(1, $idadmin);
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idadmin);
 
-        $consulta->execute();
-        $this->con = null;
+            $consulta->execute();
+            $this->con = null;
 
-        if ($consulta->rowCount() > 0) {
-            return $consulta;
-        } else {
-            return $consulta;
-        } //fin else
-    } catch (PDOExeption $e) {
-        print "Error:" . $e->getmessage();
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
     }
-}
 /**********************************FUNCION DONDE MUSTRA LOS PEDIDOS A USUARIO ADMINISTRADOR IMPRIMIR*************/
-public function get_listapedidos_admin_id($idadmin,$idpedidos)
-{
-    try
+    public function get_listapedidos_admin_id($idadmin, $idpedidos)
     {
-        $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente        
+        try
+        {
+            $sql = "SELECT * FROM pedidos INNER JOIN clientes on clientes.idclientes=pedidos.idcliente
                  WHERE idusuarios_admin =? and idpedidos=? ";
 
-        $consulta = $this->con->prepare($sql);
-        $consulta->bindParam(1, $idadmin);
-        $consulta->bindParam(2, $idpedidos);
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $idadmin);
+            $consulta->bindParam(2, $idpedidos);
 
-        $consulta->execute();
-        $this->con = null;
+            $consulta->execute();
+            $this->con = null;
 
-        if ($consulta->rowCount() > 0) {
-            return $consulta;
-        } else {
-            return $consulta;
-        } //fin else
-    } catch (PDOExeption $e) {
-        print "Error:" . $e->getmessage();
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
     }
-}
 
 /*********************************************************************Actualiza Status del Pedido********************************/
 
-public function set_pedidos_update_status($id, $status)
-{
-    $this->idpedidos = $id;   
-    $this->status = $status;
+    public function set_pedidos_update_status($id, $status)
+    {
+        $this->idpedidos = $id;
+        $this->status = $status;
 
-}
-
-public function add_pedidos_update_status()
-{
-    try {
-        if ($this->idpedidos != null) {
-        
-            $sql = "UPDATE  pedidos"
-                . " SET status = ?"               
-                . " WHERE idpedidos =?";
-        }
-
-        $consulta = $this->con->prepare($sql);
-        $consulta->bindparam(1, $this->status);    
-
-        if ($this->idpedidos != null) {
-            $consulta->bindparam(2, $this->idpedidos);
-        }
-        $consulta->execute();
-        return $sql;
-        $this->con = null;
-
-    } catch (PDOEception $ex) {
-        print "Error:" . $e->getMessage();
     }
-}
 
-public function del_pedidos($id)
-{
-    try {
-        $sql = "DELETE FROM pedidos WHERE idpedidos = ?";
-        $consulta = $this->con->prepare($sql);
-        $consulta->bindParam(1, $id);
-        $consulta->execute();
-        $this->con = null;
-    } catch (PDOException $e) {
-        print "Error: " . $e->getMessage();
+    public function add_pedidos_update_status()
+    {
+        try {
+            if ($this->idpedidos != null) {
+
+                $sql = "UPDATE  pedidos"
+                    . " SET status = ?"
+                    . " WHERE idpedidos =?";
+            }
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindparam(1, $this->status);
+
+            if ($this->idpedidos != null) {
+                $consulta->bindparam(2, $this->idpedidos);
+            }
+            $consulta->execute();
+            return $sql;
+            $this->con = null;
+
+        } catch (PDOEception $ex) {
+            print "Error:" . $e->getMessage();
+        }
     }
-}
+
+    public function del_pedidos($id)
+    {
+        try {
+            $sql = "DELETE FROM pedidos WHERE idpedidos = ?";
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $id);
+            $consulta->execute();
+            $this->con = null;
+        } catch (PDOException $e) {
+            print "Error: " . $e->getMessage();
+        }
+    }
+
+/**************************cambios */
+    private $pedido_id;
+    private $status_s;
+
+    public function set_pedidos_update_status_cambio($id, $status_s, $iddetalle)
+    {
+        $this->pedido_id = $id;
+        $this->status = $status_s;
+
+    }
+    public function add_pedidos_update_cambio()
+    {
+        try {
+            if ($this->pedido_id != null) {
+
+                $sql = "UPDATE cambios"
+                    . " SET status = ?,"
+                    . " iddetalle = ?"
+                    . " WHERE pedido_id =?";
+            }
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindparam(1, $this->status);
+            $consulta->bindparam(2, $this->iddetalle);
+
+            if ($this->pedido_id != null) {
+                $consulta->bindparam(3, $this->pedido_id);
+            }
+            $consulta->execute();
+            return $sql;
+            $this->con = null;
+
+        } catch (PDOEception $ex) {
+            print "Error:" . $e->getMessage();
+        }
+    }
+
+    public function get_cambio_nuevo_pedido($iddetalle)
+    {
+        try
+        {
+            $sql = "SELECT * FROM cambios 
+            inner join pedidos
+            on pedidos.idpedidos=cambios.pedido_id
+            inner join articulos
+            on articulos.idarticulos=cambios.articulo_id WHERE iddetalle =? ";
+
+            $consulta = $this->con->prepare($sql);
+            $consulta->bindParam(1, $iddetalle);
+
+            $consulta->execute();
+            $this->con = null;
+
+            if ($consulta->rowCount() > 0) {
+                return $consulta;
+            } else {
+                return $consulta;
+            } //fin else
+        } catch (PDOExeption $e) {
+            print "Error:" . $e->getmessage();
+        }
+    }
 } //fin de la clase

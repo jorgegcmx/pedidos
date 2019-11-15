@@ -10,8 +10,12 @@ $id = null;
 $fecha = date('Y-m-d');
 $total = $_SESSION["total"];
 $idcliente = $_POST["idcliente"];
-$status = 'PDP';
 
+if (isset($_POST["cambio"])) {
+    $status = 'CM';
+} else {
+    $status = 'PDP';
+}
 
 $usu1->set_pedidos($id, $fecha, $total, $idcliente, $status);
 $sql = $usu1->add_pedidos();
@@ -27,6 +31,19 @@ while ($data = $dato->fetchObject()) {
 }
 $ultimo;
 
+if (isset($_POST["cambio"])){
+
+    include_once 'Classpedidos.php';
+    $cam = new Classpedidos();
+    $idpedidos = $_POST["idpedidos"];
+    $status_cambio = 2;
+    $id_nuevo_pedido=$ultimo;
+    $cam->set_pedidos_update_status_cambio($idpedidos, $status_cambio,$id_nuevo_pedido);
+    $sql = $cam->add_pedidos_update_cambio();
+
+}
+
+
 $carrito = $_SESSION["carrito"];
 $lista = $carrito;
 
@@ -34,15 +51,16 @@ include_once 'Classpedidos.php';
 $save = new Classpedidos();
 
 foreach ($carrito as $p) {
-
-    $save->set_detalle_pedidos(null, $p->idproductos, $p->cantidad, $p->subtotal, $p->precio, $ultimo,$p->comentario);
+    $save->set_detalle_pedidos(null, $p->idproductos, $p->cantidad, $p->subtotal, $p->precio, $ultimo, $p->comentario);
     $sql = $save->add_detalle_pedidos();
-
 }
 
 unset($_SESSION['carrito']);
+unset($_SESSION['idpedido']);
+unset($_SESSION['importe']);
+unset($_SESSION['tipo']);
 
 echo '<script type="text/javascript">
 			     alert("Guardado Correctamente");
 				 window.location.href="../view_clientes/view_pedidos.php";
-				 </script>';
+	 </script>';

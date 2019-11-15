@@ -71,6 +71,8 @@ Para realizar el pago de los pedidos debe contactarse con ventas al <b><?php ech
                             echo "<label class='badge badge-primary'>En proceso de Envio</label>"; 
                           } elseif($fil->status=='RC'){
                             echo "<label class='badge badge-success'>Recibido por Cliente</label>"; 
+                          } elseif($fil->status=='CM'){
+                            echo "<label class='badge badge-danger'>Solicitud de Cambio</label>"; 
                           }                            
                           ?>                           
                           <br>
@@ -113,8 +115,50 @@ Para realizar el pago de los pedidos debe contactarse con ventas al <b><?php ech
                            </tbody>
                            </table>               
                           </td>                                       
+                          </tr>
+                          <tr>
+                          <td  colspan="2" ></td>
+                          <td>                
+                          <table>
+                          <tr>
+                          <th colspan="5"><b><h2 class='btn btn-block btn-info'>Articulos a Cambiar</h2></b></th>
+                          </tr>
+                          <tr>
+                          <th> </th>      
+                          <th> Articulo </th>
+                          <th> Cantidad  </th>
+                          <th> Costo Unitario  </th>
+                          <th> Subtotal  </th>
+                          </tr>
+                          <?php 
+                           include_once '../pedidos/Classpedidos.php';
+                          $cambio = new Classpedidos();
+                          $total=0;                                         
+                          $cambi = $cambio->get_cambio_nuevo_pedido($fil->idpedidos);                             
+                          while($cam = $cambi->fetchObject()){   
+                          ?>
+                          <tr>
+                          <td><img src="../articulos/<?php echo $cam->img; ?>" 
+                                        alt="Responsive Image" 
+                                       width="307px" height="240px" /> </td>
+                          <td><?php echo $cam->nombre; ?> </td>
+                          <td><?php echo $cam->cantidad; ?> </td>
+                          <td>$<?php echo $cam->unicost; ?> </td>
+                          <td>$<?php echo $cam->cambio_subtotal; ?> </td>
+                          </tr>
+                          <?php 
+                            $total=$total+$cam->cambio_subtotal;
+                           
+                         } ?>  
+                         <tr>
+                         <td colspan='4'> </td>
+                         <td ><b>Total: $<?php echo $total; ?> </b>                     
+                         </td>
                         </tr>
-                        <tr>                     
+                         </table>  
+                        
+                            </td>
+                            </tr>                 
                         <?php } ?>
                       
                       </tbody>

@@ -16,6 +16,9 @@ if($_SESSION['idusuarios_admin']==2){
 $idclientes=$_SESSION['idclientes']; 
 $email=$_SESSION['email_cliente'];
 $contacto=$_SESSION['telefono_admin'];
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -177,6 +180,12 @@ $contacto=$_SESSION['telefono_admin'];
                     <li class="nav-item">
                     <a class="nav-link" href="view_pedidos_completados.php">
                        <span class="menu-title">Pedidos Completados</span>
+                       <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="view_cambios.php">
+                       <span class="menu-title">Solicitud de Cambio</span>
                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                     </a>
                     </li>

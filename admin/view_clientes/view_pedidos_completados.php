@@ -63,6 +63,9 @@
                           ?>                           
                           <br>
                           Subtotal                          
+                          </th>
+                          <th>
+                        
                           </th>                         
                           </tr>
                        
@@ -77,7 +80,8 @@
                            <tr>
                            <td><img src="../articulos/<?php echo $det->img; ?>" 
                                        class="img-fluid"  alt="Responsive Image" 
-                                       width="307" height="240" /></td>
+                                       width="307" height="240" />
+                           </td>
                            <td>
                            <?php echo $det->nombre; ?><br>
                            <small><?php echo $det->comentario; ?></small>
@@ -85,7 +89,20 @@
                            <td><?php echo $det->cantidad; ?></td>
                            <td>$<?php echo $det->costouni; ?></td>
                            <td>$<?php echo $det->subtotal; ?></td>
-                         
+                           <td>
+                           
+
+                          <form action="../cambios/agregar.php" method="post">
+                          <input type="hidden" name="pedido_id" value="<?php echo $det->idpedido; ?>">
+                          <input type="hidden" name="articulo_id" value="<?php echo $det->idarticulo; ?>">
+                          <input type="hidden"  name="iddetalle" value="<?php echo $det->iddetalle_pedidos; ?>">                          
+                          <input type="hidden" name="cantidad_original" value="<?php echo $det->cantidad; ?>">                          
+                          <input type="hidden" name="unicost" value="<?php echo $det->costouni; ?>">
+
+                          <input type="number" class="form-control" name="cantidad" ><br>
+                          <button type='submit' class='btn btn-block btn-success'>Solicitar Cambio</button>
+                          </form>
+                           </td>
                            </tr>
                            <?php } ?>
                            <tr>

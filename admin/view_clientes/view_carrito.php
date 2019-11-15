@@ -14,8 +14,16 @@ include_once 'header.php';
                    <input type="button" OnClick="location.href='index.php'" class="btn btn-gradient-primary btn-rounded btn-fw" value="+ Agregar más Articulos"> 
                     <div class="card-body">
                     <h4 class="card-title">Articulos en Carrito</h4>                    
-                    
+                  
                     <div class="table-responsive">
+                    <?php 
+                    if(isset($_SESSION["tipo"])!=''){
+                                          echo "<h4 class='btn btn-danger'>Esta Solicitando ".$_SESSION["tipo"]."</h4>";
+                                       
+                                        }else{
+                                        
+                                        }    
+                     ?> 
                     <table id="datatables-example" class="table table-striped table-bordered" width="100%" cellspacing="0">
 <?php
 if(isset($_SESSION["carrito"])){
@@ -46,7 +54,11 @@ if(isset($_SESSION["carrito"])){
 									                      <td><?php echo $p->cantidad; ?></td>
                                         <td>$<?php echo $p->precio; ?></td>
 									                      <td><b>$<?php echo $p->subtotal; ?></b></td>
-                                        <td><p><?php echo $p->comentario; ?></p></td>
+                                        <td>
+                                        <p>
+                                        <?php 
+                                        $p->comentario;                                                                 
+                                        ?></p></td>
 									                       <td>
                                         <a href="../articulos/eliminarprocar.php?idcar=<?php echo $i; ?>"
                                           id="confirmacion" class="badge badge-gradient-danger">
@@ -62,7 +74,7 @@ if(isset($_SESSION["carrito"])){
                     <?php      
                     }
                     ?>
-               		<tr>
+               		 <tr>
 					         <td colspan='3'></td>
                    <td ><b><h2>Total:</h2></b></td>
 					         <td><b><h2>$ <?php echo $total; ?></h2></b></td>   
@@ -72,8 +84,33 @@ if(isset($_SESSION["carrito"])){
                     $_SESSION ["total"]=$total;
                     ?>
 					         </tr>
-					         <tr>
+					          <tr>
 					            <td colspan='7'>
+                     <?php if(isset($_SESSION["importe"])!=''){
+                                          echo "<b><h2 class='btn btn-info'>Importe Maximo de Cambio : $".$_SESSION["importe"]."</h2></b>";                                        
+                                          echo"<br>";
+                                          if($_SESSION["importe"]< $_SESSION ["total"]){
+                                          echo " <input type='submit' class='btn btn-danger' value='Error no puede ser mayor el importe del nuevo pedido que el importe de cambio, debes eliminar articulos'>";
+                                          }else{
+                                            ?>
+                                            <form action='../pedidos/addpedidos.php' method='post'>					
+                                            <div class='col-sm-10'>
+                                            <input type='hidden' class='form-control' name='cambio'>
+                                            <input type='hidden' class='form-control'value='<?php echo $_SESSION["idpedido"]; ?>' name='idpedidos'>
+                                            <input type='hidden' class='form-control'value='<?php echo $idclientes; ?>' name='idcliente'>
+                                            </div>										
+                                            <div align='right'>
+                                            <input type='submit' class='btn btn-success' value='Generar Pedido'>
+                                            </div> 
+                                            </form>
+                                            <?php
+
+                                          }
+                                         
+                                    
+                                        
+                      }else{
+                       ?>
 					            <form action='../pedidos/addpedidos.php' method='post'>					
 					            <div class='col-sm-10'>
                       <input type='hidden' class='form-control'value='<?php echo $idclientes; ?>' name='idcliente'>
@@ -82,7 +119,7 @@ if(isset($_SESSION["carrito"])){
 						          <input type='submit' class='btn btn-success' value='Generar Pedido'>
 						          </div> 
                       </form>
-                       <br>
+                       <!--br>
                         <?php 
                         require 'vendor/autoload.php';                         
                         MercadoPago\SDK::setAccessToken('TEST-746453493573070-110421-edafea5b7e2fcbd452fc65f02db466b5-486125513');                                                                      
@@ -104,20 +141,20 @@ if(isset($_SESSION["carrito"])){
                         data-preference-id="<?php echo $preference->id; ?>">
                         </script>
                        </form> 
-                       </div>              
-					    </td>	
-					    </tr>                   
+                       </div-->              
+					             </td>	
+					             </tr>                   
                       <?php 
-
+                       }
 	                   }else{
 		  
-                   	}
+                   	 }
 
                     ?>
                   </table>
-<div class="alert alert-primary" role="alert">
-Para realizar el pago de los pedidos debe contactarse con ventas al <b><?php echo $contacto; ?></b> , de esta forma verificaran su pedido y le proporcionará los datos para que realice el pago y de la misma manera el método de envió.
-</div>
+                  <div class="alert alert-primary" role="alert">
+                    Para realizar el pago de los pedidos debe contactarse con ventas al <b><?php echo $contacto; ?></b> , de esta forma verificaran su pedido y le proporcionará los datos para que realice el pago y de la misma manera el método de envió.
+                  </div>
                   </div>
                   </div>
                 </div>
