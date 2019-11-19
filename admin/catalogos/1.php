@@ -88,15 +88,31 @@ $idusuario="1";
                             <div class="card-body">
                                 
                             <form class="d-flex align-items-center h-100" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
-                        <div class="input-group">
+                            <div class="input-group">
                             <div class="input-group-prepend bg-transparent">
                                 <i class="input-group-text border-0 mdi mdi-magnify"></i>
                             </div>
-                            <input type="text"  name="producto" class="form-control bg-transparent border-0" autofocus
-                                placeholder="Buscar Producto">
-                        </div>
-                        <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Buscar</button>
-                    </form>
+        
+                              <label> 
+                               <input type="text" name="producto" list="list" class="form-control bg-transparent border-0" autofocus />
+                               <datalist id="list">      
+                                <label>
+                                <select >
+                                <?php   
+                                include_once "../articulos/Classe.php";
+                                $busca = new Classe();
+                                $bus = $busca->get_articulo($idusuario);
+                                while($fi = $bus->fetchObject()){ 
+                                ?>
+                                 <option value="<?php echo $fi->nombrearticulo; ?>">  
+                                <?php }?>
+                                </select>
+                                 </label>        
+                                </datalist>
+                               </label>                          
+                              </div>
+                             <button type="submit" class="btn btn-gradient-primary btn-rounded btn-fw">Buscar</button>
+                           </form>
               
                                 <div class="row product-item-wrapper">
                                     <?php 
