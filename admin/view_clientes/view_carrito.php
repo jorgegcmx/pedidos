@@ -57,7 +57,7 @@ if(isset($_SESSION["carrito"])){
                                         <td>
                                         <p>
                                         <?php 
-                                        $p->comentario;                                                                 
+                                        echo $p->comentario;                                                                 
                                         ?></p></td>
 									                       <td>
                                         <a href="../articulos/eliminarprocar.php?idcar=<?php echo $i; ?>"

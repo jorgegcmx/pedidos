@@ -4,8 +4,14 @@ if(!isset($_SESSION['idclientes'])){
   header("Location:../../");
 }
  
+ 
+
+if($_SESSION['idusuarios_admin']==2 && $_SESSION['idclientes']==1){
+  $idusuario=2;
+  $idasociado=1;
+  $comision=0;
   
-if($_SESSION['idusuarios_admin']==2){
+}elseif($_SESSION['idusuarios_admin']==2){
    $idusuario=2;
    $idasociado=1;
    $comision=0.15;
